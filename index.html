@@ -326,7 +326,7 @@
     @keyframes floatY { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
     @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
+      *:not(.roller-track):not(.roller-item), *:not(.roller-track)::before, *:not(.roller-track)::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
     }
 
     /* ============================================
@@ -1686,7 +1686,7 @@
     .roller-track {
       display: inline-flex;
       gap: 0;
-      animation: rollerMove 32s linear infinite;
+      animation: rollerMove 38s linear infinite;
       will-change: transform;
     }
     .roller-track:hover { animation-play-state: paused; }
@@ -2450,10 +2450,16 @@
     <a href="#avaliacoes" class="mobile-link">Avaliações</a>
     <a href="#localizacao" class="mobile-link">Localização</a>
     <a href="https://wa.me/5551989458454?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Luana%20Brasil%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.%20Qual%20o%20pr%C3%B3ximo%20hor%C3%A1rio%20dispon%C3%ADvel%3F"
-       class="b    <!-- ============================================
-         HERO
-    ============================================ -->
-    <section class="hero has-texture" id="inicio">
+       class="btn btn-whatsapp" target="_blank" rel="noopener">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Agendar pelo WhatsApp
+    </a>
+  </div>
+
+  <!-- ============================================
+       HERO
+  ============================================ -->
+  <section class="hero has-texture" id="inicio">
       <div class="hero-bg-image mask-reveal"></div>
       <div class="hero-bg-overlay mask-reveal"></div>
       <div class="container">
@@ -3510,35 +3516,50 @@
   <script>
   'use strict';
 
-  // Page loader — timer fixo 1.1s + failsafe duro 2.5s
-  // (NAO depende de window.load — imagens lentas nao travam o site)
+  // Page loader — revela o site em 1.1s
   (function() {
     var loader  = document.getElementById('page-loader');
     var curtain = document.getElementById('loader-curtain');
     var body    = document.body;
-    if (!loader) { body.classList.remove('loading'); return; }
+    // Garante que o body nunca fica travado
+    body.classList.remove('loading');
+
+    function revealAll() {
+      // Revela TODOS os elementos animados para garantir visibilidade
+      var sel = '.animate,.animate-left,.animate-right,.animate-scale,.hero-text-inner,.grow-line,.mask-reveal,.section-title-underline';
+      document.querySelectorAll(sel).forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+
+    if (!loader) {
+      // Sem loader: revela tudo imediatamente
+      revealAll();
+      return;
+    }
+
     var dismissed = false;
     function dismiss() {
       if (dismissed) return;
       dismissed = true;
       loader.classList.add('done');
       if (curtain) curtain.classList.add('lift');
-      // Libera scroll quase imediato (cortina ainda animando)
-      body.classList.remove('loading');
-      // Dispara animacoes do hero
-      document.querySelectorAll('.hero .animate, .hero .animate-right, .hero-text-inner').forEach(function(el) {
+      // Revela o hero primeiro, imediatamente
+      document.querySelectorAll('.hero .animate, .hero .animate-left, .hero .animate-right, .hero .animate-scale, .hero-text-inner').forEach(function(el) {
         el.classList.add('visible');
       });
       // Remove DOM apos transicao
       setTimeout(function() {
-        if (loader.parentNode) loader.parentNode.removeChild(loader);
+        if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
         if (curtain && curtain.parentNode) curtain.parentNode.removeChild(curtain);
-      }, 1000);
+      }, 1100);
     }
-    // Dispensa programada (sensacao premium, mas sem depender de imagens)
     setTimeout(dismiss, 1100);
-    // Failsafe duro — independente de qualquer coisa, em 2.5s some
-    setTimeout(dismiss, 2500);
+    // Failsafe: em 2.5s revela tudo de qualquer jeito
+    setTimeout(function() {
+      dismiss();
+      revealAll();
+    }, 2500);
   })();
 
   // Fallback de visibilidade — SO roda quando IntersectionObserver nao existe
