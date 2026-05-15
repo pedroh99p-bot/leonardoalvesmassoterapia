@@ -107,6 +107,78 @@
       --duration: 0.35s;
     }
 
+    /* === DARK THEME TOKENS === */
+    html.dark-theme {
+      --c-primary: #D4B67D;
+      --c-primary-dark: #C9A96E;
+      --c-primary-light: #2A241A;
+      --c-accent: #EFEFEF;
+      --c-text: #FDFDFD;
+      --c-text-muted: #A39C93;
+      --c-bg: #1A1714;
+      --c-bg-alt: #221E19;
+      --c-bg-card: #28241D;
+      --c-border: #3A332A;
+    }
+    html.dark-theme .urgencia-bar,
+    html.dark-theme .roller,
+    html.dark-theme .footer,
+    html.dark-theme .cta-final,
+    html.dark-theme .diferenciais {
+      background: var(--c-bg-alt);
+      color: var(--c-text);
+    }
+    html.dark-theme .cta-final h2 { color: var(--c-text); }
+    html.dark-theme .cta-final p { color: var(--c-text-muted); }
+    html.dark-theme .urgencia-bar { border-top: 1px solid var(--c-border); border-bottom: 1px solid var(--c-border); color: var(--c-text); }
+    html.dark-theme .urgencia-item { color: var(--c-text-muted); }
+
+    /* Delicate Bubble for Main Logo */
+    .logo-bubble {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .logo-bubble::before {
+      content: '';
+      position: absolute;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle, rgba(201,169,110,0.3) 0%, rgba(201,169,110,0.05) 50%, transparent 80%);
+      border-radius: 50%;
+      z-index: -1;
+      filter: blur(8px);
+      animation: pulseBubble 3s infinite ease-in-out;
+    }
+    @keyframes pulseBubble {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .logo-bubble img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* Dark theme toggle */
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--c-border);
+      border-radius: var(--radius-full);
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--c-text-muted);
+      transition: all var(--duration) var(--ease);
+    }
+    .theme-toggle:hover { border-color: var(--c-primary); color: var(--c-primary); }
+
     /* === RESET + BASE === */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -2089,9 +2161,16 @@
     }
     .quiz-progress-bar {
       height: 100%;
-      background: linear-gradient(90deg, var(--c-primary), #e8c97a);
+      background: linear-gradient(90deg, var(--c-primary), #e8c97a, var(--c-primary));
+      background-size: 200% 100%;
       border-radius: var(--radius-full);
-      transition: width .5s var(--ease);
+      transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      box-shadow: 0 0 10px rgba(201,169,110,0.5);
+      animation: progressGlow 2s infinite linear;
+    }
+    @keyframes progressGlow {
+      0% { background-position: 100% 0; }
+      100% { background-position: -100% 0; }
     }
     .quiz-step { display: none; }
     .quiz-step.active { display: block; }
@@ -2366,8 +2445,9 @@
   <!-- Page Loader -->
   <div class="loader-curtain" id="loader-curtain" aria-hidden="true"></div>
   <div class="page-loader" id="page-loader" role="status" aria-label="Carregando">
-    <div class="loader-logo">Luana Brasil</div>
-    <div class="loader-sub">Massoterapeuta · Recreio</div>
+    <div class="loader-logo logo-bubble" style="width: 160px; margin-bottom: 20px;">
+      <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1778867071/ChatGPT_Image_May_15_2026_02_39_41_PM_3_wvpcrz.png" alt="Luana Brasil">
+    </div>
     <div class="loader-line"></div>
   </div>
 
@@ -2401,9 +2481,8 @@
   <header class="navbar" id="navbar">
     <div class="container">
       <div class="navbar-inner">
-        <a href="#" class="navbar-logo">
-          <span class="logo-name">Luana Brasil</span>
-          <span class="logo-sub">Massoterapeuta · Recreio</span>
+        <a href="#" class="navbar-logo logo-bubble" style="width: 100px;">
+          <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1778867071/ChatGPT_Image_May_15_2026_02_39_41_PM_3_wvpcrz.png" alt="Luana Brasil">
         </a>
         <nav class="navbar-nav">
           <a href="#inicio">Início</a>
@@ -2415,6 +2494,11 @@
           <a href="#localizacao">Localização</a>
         </nav>
         <div class="navbar-actions">
+          <!-- Theme Selector -->
+          <button class="theme-toggle" id="theme-toggle" aria-label="Alternar Tema">
+            <svg id="theme-icon-moon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <svg id="theme-icon-sun" style="display:none" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          </button>
           <!-- Language Selector -->
           <div class="lang-select" id="lang-select">
             <button class="lang-btn" id="lang-btn" aria-label="Idioma" aria-expanded="false">
@@ -2637,7 +2721,7 @@
           <!-- Coluna esquerda: foto pequena + números -->
           <div class="especialista-left animate-left">
             <div class="especialista-image-wrap mask-reveal">
-              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1777694630/0cadc182-6847-4ef1-8b94-07f6d31f22e9_zgqjbn.png" alt="Luana Brasil Especialista" style="width:100%;height:100%;object-fit:cover;object-position:center top;transform:scale(1.05);">
+              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1778866757/604e9b44-f06e-4bdb-8f84-acae8a5075ae_1_1_qjxvrm.png" alt="Luana Brasil Especialista" style="width:100%;height:100%;object-fit:contain;object-position:center;padding:var(--s-xl);">
             </div>
 
             <div class="especialista-nums stagger">
@@ -2721,6 +2805,9 @@
           <p style="color:var(--c-text-muted);margin-top:var(--s-md);font-size:var(--f-size-sm)">Responda 3 perguntas rápidas e receba uma recomendação inicial de protocolo.</p>
         </header>
         <div class="quiz-box animate">
+          <div style="text-align: center; margin-bottom: var(--s-lg);">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1778866757/604e9b44-f06e-4bdb-8f84-acae8a5075ae_1_1_qjxvrm.png" alt="Luana Brasil" style="width: 80px; height: auto; margin: 0 auto; display: block; opacity: 0.8;">
+          </div>
           <div class="quiz-progress"><div class="quiz-progress-bar" id="quiz-progress-bar" style="width:33%"></div></div>
           <!-- Passo 1 -->
           <div class="quiz-step active" id="quiz-step-1">
@@ -3246,7 +3333,7 @@
 
         <div class="google-badge animate" style="margin-top:var(--s-xl)">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          Avaliações reais verificadas no <strong>Google Meu Negócio</strong>
+          Avaliações reais verificadas no <a href="https://share.google/zXPQteleYgrLFge4V" target="_blank" rel="noopener" style="color:var(--c-primary);font-weight:bold;margin-left:4px;text-decoration:underline;">Google Meu Negócio</a>
         </div>
       </div>
     </section>
@@ -3420,7 +3507,9 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">
-          <div class="logo-name">Luana Brasil</div>
+          <div class="logo-bubble" style="width: 140px; margin-bottom: var(--s-md);">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1778867071/ChatGPT_Image_May_15_2026_02_39_41_PM_3_wvpcrz.png" alt="Luana Brasil">
+          </div>
           <span class="logo-sub">Atendimento personalizado em massoterapia e bem-estar.</span>
           <p>Studio focado em alívio de dor, tensão, recuperação muscular e relaxamento. Recreio dos Bandeirantes, Rio de Janeiro.</p>
           <div class="footer-social" style="margin-top:var(--s-lg)">
@@ -3524,17 +3613,27 @@
     // Garante que o body nunca fica travado
     body.classList.remove('loading');
 
+    function revealHero() {
+      // Revela todos os elementos do hero
+      document.querySelectorAll(
+        '.hero .animate, .hero .animate-left, .hero .animate-right, .hero .animate-scale, ' +
+        '.hero-text-inner, .hero-badge, .hero-sub, .hero-ctas, .hero-social-proof, .hero-image-area'
+      ).forEach(function(el) {
+        el.classList.add('visible');
+      });
+    }
+
     function revealAll() {
       // Revela TODOS os elementos animados para garantir visibilidade
-      var sel = '.animate,.animate-left,.animate-right,.animate-scale,.hero-text-inner,.grow-line,.mask-reveal,.section-title-underline';
+      var sel = '.animate,.animate-left,.animate-right,.animate-scale,.hero-text-inner,.grow-line,.mask-reveal,.section-title-underline,.reveal';
       document.querySelectorAll(sel).forEach(function(el) {
         el.classList.add('visible');
       });
     }
 
     if (!loader) {
-      // Sem loader: revela tudo imediatamente
-      revealAll();
+      // Sem loader: revela hero imediatamente
+      revealHero();
       return;
     }
 
@@ -3544,10 +3643,8 @@
       dismissed = true;
       loader.classList.add('done');
       if (curtain) curtain.classList.add('lift');
-      // Revela o hero primeiro, imediatamente
-      document.querySelectorAll('.hero .animate, .hero .animate-left, .hero .animate-right, .hero .animate-scale, .hero-text-inner').forEach(function(el) {
-        el.classList.add('visible');
-      });
+      // Revela o hero imediatamente ao dismiss
+      revealHero();
       // Remove DOM apos transicao
       setTimeout(function() {
         if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
@@ -3622,8 +3719,8 @@
       entries.forEach(function(e) {
         if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.animate,.animate-left,.animate-right,.animate-scale,.grow-line,.mask-reveal,.section-title-underline').forEach(function(el) {
+    }, { threshold: 0.06, rootMargin: '0px 0px -20px 0px' });
+    document.querySelectorAll('.animate,.animate-left,.animate-right,.animate-scale,.grow-line,.mask-reveal,.section-title-underline,.hero-text-inner,.reveal').forEach(function(el) {
       obs.observe(el);
     });
   })();
@@ -3967,6 +4064,35 @@
       if (result) result.classList.remove('active');
       document.querySelectorAll('.quiz-option').forEach(function(b) { b.classList.remove('selected'); });
       showStep(1);
+    });
+  })();
+
+  // Dark Theme Toggle
+  (function() {
+    var toggleBtn = document.getElementById('theme-toggle');
+    var iconMoon = document.getElementById('theme-icon-moon');
+    var iconSun = document.getElementById('theme-icon-sun');
+    if (!toggleBtn) return;
+    
+    var savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark-theme');
+      iconMoon.style.display = 'none';
+      iconSun.style.display = 'block';
+    }
+    
+    toggleBtn.addEventListener('click', function() {
+      document.documentElement.classList.toggle('dark-theme');
+      var isDark = document.documentElement.classList.contains('dark-theme');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      
+      if (isDark) {
+        iconMoon.style.display = 'none';
+        iconSun.style.display = 'block';
+      } else {
+        iconMoon.style.display = 'block';
+        iconSun.style.display = 'none';
+      }
     });
   })();
 
