@@ -1486,26 +1486,68 @@
     }
 
     /* ============================================
-       WHATSAPP FLOAT
+       FLOATING SOCIALS
     ============================================ */
-    .whatsapp-float {
-      position: relative;
-      width: 56px; height: 56px;
-      background: var(--c-whatsapp);
-      border-radius: 50%;
+    .floating-socials {
+      position: fixed;
+      left: 24px;
+      bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+      z-index: 9990;
       display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translateY(16px);
+      transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), visibility 0.3s var(--ease);
+    }
+    .floating-socials.visible {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .contact-float {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(37,211,102,.45);
-      transition: all var(--duration) var(--ease);
+      color: #fff;
+      border: 1px solid rgba(253,250,246,.12);
+      box-shadow: 0 14px 36px rgba(44,36,24,.22);
+      transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), filter var(--duration) var(--ease);
       animation: pulse 3s ease-in-out infinite;
     }
-    .whatsapp-float:hover {
-      background: #20BA5C;
-      transform: scale(1.1);
-      box-shadow: 0 8px 28px rgba(37,211,102,.55);
+    .contact-float:hover {
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 18px 42px rgba(44,36,24,.28);
+      filter: saturate(1.05);
     }
-    .whatsapp-float svg { width: 28px; height: 28px; color: #fff; }
+    .contact-float svg {
+      width: 26px;
+      height: 26px;
+      color: currentColor;
+    }
+    .contact-float svg * {
+      vector-effect: non-scaling-stroke;
+    }
+    .contact-float--instagram {
+      background: linear-gradient(145deg, #7d425d 0%, #b06757 52%, #d79a63 100%);
+    }
+    .contact-float--whatsapp {
+      background: var(--c-whatsapp);
+      box-shadow: 0 14px 36px rgba(37,211,102,.28);
+    }
+    .contact-float--whatsapp:hover {
+      box-shadow: 0 18px 42px rgba(37,211,102,.34);
+    }
+    .mobile-wa-bar,
+    .whatsapp-float {
+      display: none !important;
+    }
 
     /* ============================================
        LGPD BANNER
@@ -1678,50 +1720,21 @@
       pointer-events: auto;
     }
 
-    /* ============================================
-       MOBILE WHATSAPP STICKY BAR
-    ============================================ */
-    .mobile-wa-bar {
-      display: none;
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 9990;
-      background: var(--c-whatsapp);
-      padding-bottom: env(safe-area-inset-bottom, 0px);
-    }
-    .mobile-wa-bar a {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 13px 20px;
-      color: #fff;
-      text-decoration: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .mobile-wa-bar svg { width: 24px; height: 24px; flex-shrink: 0; }
-    .mobile-wa-bar .wa-texts {
-      display: flex;
-      flex-direction: column;
-      gap: 1px;
-    }
-    .mobile-wa-bar .wa-texts span:first-child {
-      font-weight: 600;
-      font-size: 0.95rem;
-      line-height: 1.2;
-    }
-    .mobile-wa-bar .wa-subtext {
-      font-size: 0.72rem;
-      opacity: 0.88;
-    }
-    .mobile-wa-bar .wa-arrow {
-      margin-left: auto;
-      opacity: 0.9;
-    }
     @media (max-width: 767px) {
-      .mobile-wa-bar { display: block; }
       .wa-tooltip-wrap  { display: none; }
-      .footer { padding-bottom: calc(var(--s-2xl) + 72px + env(safe-area-inset-bottom, 0px)); }
-      .lgpd-banner { bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
+      .floating-socials {
+        left: 14px;
+        bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+        gap: 8px;
+      }
+      .contact-float {
+        width: 52px;
+        height: 52px;
+      }
+      .contact-float svg {
+        width: 24px;
+        height: 24px;
+      }
     }
 
     /* ============================================
@@ -3467,17 +3480,7 @@
       gap: var(--s-md);
       align-items: center;
     }
-    .whatsapp-float {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .whatsapp-float span {
-      color: #fff;
-      font-size: .82rem;
-      font-weight: 700;
-      letter-spacing: .08em;
-    }
+    .floating-socials { align-items: flex-start; }
     @media (min-width: 768px) and (max-width: 1099px) {
       .ux-carousel-track { grid-auto-columns: minmax(48%, 1fr); }
       .service-panel-grid,
@@ -3592,15 +3595,6 @@
       .timeline-dot {
         left: -1.65rem;
       }
-      .mobile-wa-bar {
-        display: block;
-        padding-bottom: env(safe-area-inset-bottom, 0px);
-      }
-      .mobile-wa-bar a {
-        min-height: 64px;
-        padding: 13px 16px;
-      }
-      .footer { padding-bottom: calc(var(--s-2xl) + 76px + env(safe-area-inset-bottom, 0px)); }
     }
     @media (max-width: 520px) {
       .hero-bg-image { background-position: 71% center; }
@@ -4426,15 +4420,16 @@
     </div>
   </footer>
 
-  <a href="#" class="whatsapp-float wa-link" data-wa-message="Olá, vim pelo site e quero falar pelo WhatsApp agora." target="_blank" rel="noopener" aria-label="Fale no WhatsApp"><span>WA</span></a>
-
-  <div class="mobile-wa-bar" role="complementary" aria-label="Agendar pelo WhatsApp">
-    <a href="#" class="wa-link" data-wa-message="Olá, vim pelo site e quero garantir meu horário pelo WhatsApp." target="_blank" rel="noopener" aria-label="Agendar sessão pelo WhatsApp">
-      <div class="wa-texts">
-        <span>Garantir meu horário agora</span>
-        <span class="wa-subtext">Resposta em minutos · Recreio RJ</span>
-      </div>
-      <span class="wa-arrow">→</span>
+  <div class="floating-socials" id="floating-socials" aria-label="Atalhos de contato">
+    <a href="#" class="contact-float contact-float--instagram ig-link" target="_blank" rel="noopener noreferrer" aria-label="Abrir Instagram da Luana Brasil">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3.25" y="3.25" width="17.5" height="17.5" rx="5.2" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/>
+        <circle cx="17.35" cy="6.65" r="1.15" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <a href="#" class="contact-float contact-float--whatsapp wa-link" data-wa-message="Olá, vim pelo site e quero falar pelo WhatsApp agora." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.78 11.78 0 0 0 12.11 0C5.59 0 .29 5.3.29 11.82c0 2.08.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 0 0 5.61 1.43h.01c6.52 0 11.82-5.3 11.82-11.82 0-3.16-1.23-6.14-3.42-8.43Zm-8.41 18.26h-.01a9.84 9.84 0 0 1-5.01-1.37l-.36-.22-3.86 1.01 1.03-3.76-.24-.39a9.8 9.8 0 0 1-1.5-5.18c0-5.42 4.41-9.83 9.84-9.83 2.63 0 5.1 1.02 6.96 2.88a9.78 9.78 0 0 1 2.88 6.96c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.38c-.29-.14-1.72-.85-1.99-.95-.27-.1-.46-.14-.66.15-.19.29-.75.95-.92 1.15-.17.19-.34.22-.63.07-.29-.14-1.2-.44-2.29-1.41-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.45.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.36-.02-.51-.07-.14-.66-1.58-.9-2.17-.24-.57-.48-.49-.66-.5h-.56c-.19 0-.51.07-.78.36-.27.29-1.02 1-.1 2.44.92 1.43 2.1 2.82 4.8 3.95.64.28 1.14.45 1.53.58.64.2 1.23.17 1.69.1.52-.08 1.72-.7 1.96-1.37.24-.67.24-1.24.17-1.36-.07-.12-.27-.19-.56-.34Z" fill="currentColor" stroke="none"/></svg>
     </a>
   </div>
 
@@ -4444,7 +4439,8 @@
 
   var SITE_CONFIG = {
     // TODO: substituir pelo numero definitivo do atendimento se houver outro WhatsApp para o RJ.
-    whatsappNumber: '5551989458454'
+    whatsappNumber: '5551989458454',
+    instagramUrl: 'https://www.instagram.com/massoterapeuta_lubrasil/'
   };
 
   function buildWhatsAppLink(message) {
@@ -4460,7 +4456,14 @@
     });
   }
 
+  function hydrateInstagramLinks() {
+    document.querySelectorAll('.ig-link').forEach(function(link) {
+      link.href = SITE_CONFIG.instagramUrl;
+    });
+  }
+
   hydrateWhatsAppLinks();
+  hydrateInstagramLinks();
 
   (function() {
     var loader = document.getElementById('page-loader');
@@ -4543,6 +4546,37 @@
     }
     window.addEventListener('scroll', update, { passive: true });
     update();
+  })();
+
+  (function() {
+    var floats = document.getElementById('floating-socials');
+    var main = document.getElementById('conteudo-principal');
+    var navbar = document.getElementById('navbar');
+    if (!floats || !main) return;
+
+    var sections = Array.prototype.filter.call(main.children, function(node) {
+      return node.tagName === 'SECTION';
+    });
+    var triggerSection = sections[2];
+    if (!triggerSection) return;
+
+    var triggerTop = 0;
+
+    function measure() {
+      triggerTop = triggerSection.getBoundingClientRect().top + window.scrollY;
+      update();
+    }
+
+    function update() {
+      var offset = navbar ? navbar.offsetHeight : 0;
+      var passed = window.scrollY + offset >= triggerTop;
+      floats.classList.toggle('visible', passed);
+    }
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', measure);
+    window.addEventListener('load', measure);
+    measure();
   })();
 
   (function() {
