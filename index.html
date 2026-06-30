@@ -2417,12 +2417,18 @@
       padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .18rem;
       box-shadow: 0 8px 24px rgba(0,0,0,.15);
     }
+    .navbar,
+    .navbar * { box-sizing: border-box; }
     .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       min-height: 42px;
       gap: .75rem;
+      width: 100%;
     }
     .navbar-logo {
-      width: clamp(90px, 13vw, 118px);
+      width: clamp(86px, 11vw, 110px);
       flex-shrink: 0;
     }
     .navbar-nav {
@@ -2441,6 +2447,11 @@
       color: rgba(253,250,246,.72);
       white-space: nowrap;
       padding: .12rem 0;
+    }
+    .navbar-nav a + a {
+      margin-left: .1rem;
+      padding-left: .9rem;
+      border-left: 1px solid rgba(253,250,246,.14);
     }
     .navbar-nav a::after { background: var(--c-primary); }
     .navbar-nav a:hover { color: #fff; }
@@ -2473,13 +2484,11 @@
     .hero-bg-image {
       background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp');
       background-size: cover;
-      background-position: 76% center;
-      filter: saturate(.95) contrast(1.01);
+      background-position: 72% center;
+      filter: saturate(.98) contrast(1.02);
     }
     .hero-bg-overlay {
-      background:
-        linear-gradient(90deg, rgba(72,50,46,.96) 0%, rgba(72,50,46,.9) 34%, rgba(72,50,46,.58) 56%, rgba(72,50,46,.16) 82%, rgba(72,50,46,.06) 100%),
-        linear-gradient(180deg, rgba(72,50,46,.22) 0%, rgba(72,50,46,.28) 100%);
+      background: linear-gradient(90deg, rgba(54,35,31,.84) 0%, rgba(54,35,31,.66) 36%, rgba(54,35,31,.22) 62%, rgba(54,35,31,.04) 100%);
     }
     .hero .container { position: relative; z-index: 1; }
     .hero-inner--focused {
@@ -3446,11 +3455,9 @@
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 81% center; }
+      .hero-bg-image { background-position: 84% center; }
       .hero-bg-overlay {
-        background:
-          linear-gradient(90deg, rgba(72,50,46,.96) 0%, rgba(72,50,46,.9) 62%, rgba(72,50,46,.34) 100%),
-          linear-gradient(180deg, rgba(72,50,46,.18) 0%, rgba(72,50,46,.24) 100%);
+        background: linear-gradient(90deg, rgba(54,35,31,.88) 0%, rgba(54,35,31,.72) 42%, rgba(54,35,31,.24) 68%, rgba(54,35,31,.03) 100%);
       }
       .hero h1 {
         max-width: 8.7ch;
@@ -3478,25 +3485,38 @@
     @media (max-width: 767px) {
       section[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)); }
       .navbar {
-        padding: calc(env(safe-area-inset-top, 0px) + .14rem) 0 .16rem;
+        padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .14rem;
       }
       .navbar.scrolled {
-        padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .12rem;
+        padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .1rem;
       }
-      .navbar-inner { min-height: 40px; }
-      .navbar-logo { width: 94px; }
-      .navbar-nav {
-        gap: .75rem;
-        margin-left: 0;
+      .navbar .container { padding-inline: 1.2rem; }
+      .navbar-inner {
+        min-height: 38px;
+        gap: .7rem;
       }
-      .navbar-nav a { font-size: .62rem; }
+      .navbar-logo { width: 74px; }
+      .navbar-nav { display: none !important; }
+      .navbar-actions {
+        margin-left: auto;
+        flex-shrink: 0;
+      }
+      .navbar-cta {
+        display: inline-flex;
+        padding: .45rem .72rem;
+        min-height: 36px;
+        font-size: .52rem;
+        letter-spacing: .1em;
+      }
       .hero-kicker { display: none; }
       .hero-badge {
-        max-width: 18rem;
+        max-width: 16.8rem;
         margin-bottom: .85rem;
-        font-size: .66rem;
+        padding: .72rem 1rem;
+        font-size: .58rem;
+        letter-spacing: .14em;
       }
-      .hero-content { max-width: 17.8rem; }
+      .hero-content { max-width: 16.8rem; }
       .hero-ctas {
         flex-direction: column;
         align-items: stretch;
@@ -3550,27 +3570,16 @@
       }
     }
     @media (max-width: 520px) {
-      .navbar {
-        padding: calc(env(safe-area-inset-top, 0px) + .14rem) 0 .18rem;
+      .navbar .container { padding-inline: 1.28rem; }
+      .navbar-logo { width: 70px; }
+      .navbar-cta {
+        padding: .42rem .64rem;
+        font-size: .5rem;
       }
-      .navbar.scrolled {
-        padding: calc(env(safe-area-inset-top, 0px) + .1rem) 0 .14rem;
+      .hero-bg-image { background-position: 88% center; }
+      .hero-bg-overlay {
+        background: linear-gradient(90deg, rgba(54,35,31,.9) 0%, rgba(54,35,31,.74) 48%, rgba(54,35,31,.18) 76%, rgba(54,35,31,.02) 100%);
       }
-      .navbar-inner {
-        min-height: 38px;
-        gap: .45rem;
-      }
-      .navbar-logo {
-        width: 68px;
-      }
-      .navbar-nav {
-        gap: .25rem;
-      }
-      .navbar-nav a {
-        font-size: .46rem;
-        letter-spacing: .02em;
-      }
-      .hero-bg-image { background-position: 84% center; }
       .hero h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
       .hero-sub { max-width: 16.5rem; }
       .container { padding-inline: 1rem; }
@@ -3622,15 +3631,12 @@
         </a>
         <nav class="navbar-nav" aria-label="Navegação principal">
           <a href="#inicio">Início</a>
-          <a href="#dores">Sinais</a>
           <a href="#quiz">Quiz</a>
-          <a href="#especialista">Especialista</a>
           <a href="#servicos">Protocolos</a>
-          <a href="#como-funciona">Como funciona</a>
           <a href="#localizacao">Localização</a>
         </nav>
         <div class="navbar-actions">
-          <a href="#" class="btn navbar-cta wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis desta semana." target="_blank" rel="noopener" id="navbar-cta">Ver horários</a>
+          <a href="#" class="btn navbar-cta wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis desta semana." target="_blank" rel="noopener" id="navbar-cta">Agendar</a>
         </div>
       </div>
     </div>
