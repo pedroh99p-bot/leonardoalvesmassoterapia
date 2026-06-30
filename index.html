@@ -1490,7 +1490,7 @@
     ============================================ */
     .floating-socials {
       position: fixed;
-      left: 24px;
+      right: 24px;
       bottom: calc(24px + env(safe-area-inset-bottom, 0px));
       z-index: 9990;
       display: flex;
@@ -1723,7 +1723,7 @@
     @media (max-width: 767px) {
       .wa-tooltip-wrap  { display: none; }
       .floating-socials {
-        left: 14px;
+        right: 14px;
         bottom: calc(14px + env(safe-area-inset-bottom, 0px));
         gap: 8px;
       }
@@ -3480,7 +3480,7 @@
       gap: var(--s-md);
       align-items: center;
     }
-    .floating-socials { align-items: flex-start; }
+    .floating-socials { align-items: flex-end; }
     @media (min-width: 768px) and (max-width: 1099px) {
       .ux-carousel-track { grid-auto-columns: minmax(48%, 1fr); }
       .service-panel-grid,
