@@ -329,6 +329,13 @@
       background: var(--c-whatsapp);
       color: #fff;
     }
+    .btn-whatsapp::before {
+      content: '';
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='white' d='M20.52 3.48A11.78 11.78 0 0 0 12.11 0C5.59 0 .29 5.3.29 11.82c0 2.08.54 4.1 1.56 5.88L0 24l6.5-1.7a11.8 11.8 0 0 0 5.61 1.43h.01c6.52 0 11.82-5.3 11.82-11.82 0-3.16-1.23-6.14-3.42-8.43Zm-8.41 18.26h-.01a9.84 9.84 0 0 1-5.01-1.37l-.36-.22-3.86 1.01 1.03-3.76-.24-.39a9.8 9.8 0 0 1-1.5-5.18c0-5.42 4.41-9.83 9.84-9.83 2.63 0 5.1 1.02 6.96 2.88a9.78 9.78 0 0 1 2.88 6.96c0 5.42-4.41 9.83-9.83 9.83Zm5.39-7.38c-.29-.14-1.72-.85-1.99-.95-.27-.1-.46-.14-.66.15-.19.29-.75.95-.92 1.15-.17.19-.34.22-.63.07-.29-.14-1.2-.44-2.29-1.41-.85-.76-1.43-1.7-1.6-1.99-.17-.29-.02-.45.13-.59.13-.13.29-.34.44-.51.15-.17.19-.29.29-.49.1-.19.05-.36-.02-.51-.07-.14-.66-1.58-.9-2.17-.24-.57-.48-.49-.66-.5h-.56c-.19 0-.51.07-.78.36-.27.29-1.02 1-.1 2.44.92 1.43 2.1 2.82 4.8 3.95.64.28 1.14.45 1.53.58.64.2 1.23.17 1.69.1.52-.08 1.72-.7 1.96-1.37.24-.67.24-1.24.17-1.36-.07-.12-.27-.19-.56-.34Z'/%3E%3C/svg%3E") center/contain no-repeat;
+    }
     .btn-whatsapp:hover {
       background: #20BA5C;
       transform: translateY(-2px);
@@ -468,55 +475,8 @@
         pointer-events: auto;
       }
     }
-    .navbar-hamburger {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: var(--s-sm);
-      background: none;
-      border: none;
-    }
-    .navbar-hamburger span {
-      display: block;
-      width: 22px;
-      height: 1.5px;
-      background: var(--c-text);
-      transition: all var(--duration) var(--ease);
-    }
-    .mobile-menu {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: var(--c-bg);
-      z-index: 999;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: var(--s-2xl);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--f-display);
-      font-size: 2rem;
-      color: var(--c-text);
-      transition: color var(--duration) var(--ease);
-    }
-    .mobile-menu a:hover { color: var(--c-primary); }
-    .mobile-menu-close {
-      position: absolute;
-      top: var(--s-xl);
-      right: var(--s-xl);
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: var(--c-text-muted);
-    }
-
     @media (min-width: 1024px) {
       .navbar-nav { display: flex; }
-      .navbar-hamburger { display: none; }
     }
 
     /* ============================================
@@ -2443,46 +2403,59 @@
     }
     html, body { overflow-x: hidden; }
     body { overflow-x: clip; }
-    section[id] { scroll-margin-top: calc(94px + env(safe-area-inset-top, 0px)); }
+    section[id] { scroll-margin-top: calc(72px + env(safe-area-inset-top, 0px)); }
     .container { padding-inline: clamp(1rem, 2.4vw, 1.5rem); }
     .navbar {
       background: rgba(90,64,58,.9);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      padding: calc(env(safe-area-inset-top, 0px) + .45rem) 0 .45rem;
+      padding: calc(env(safe-area-inset-top, 0px) + .18rem) 0 .22rem;
       box-shadow: 0 1px 0 rgba(201,145,140,.16);
     }
     .navbar.scrolled {
       background: rgba(90,64,58,.96);
-      padding: calc(env(safe-area-inset-top, 0px) + .28rem) 0 .35rem;
+      padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .18rem;
       box-shadow: 0 8px 24px rgba(0,0,0,.15);
     }
     .navbar-inner {
-      min-height: 52px;
-      gap: .9rem;
+      min-height: 42px;
+      gap: .75rem;
     }
     .navbar-logo {
-      width: clamp(94px, 14vw, 126px);
+      width: clamp(90px, 13vw, 118px);
       flex-shrink: 0;
     }
     .navbar-nav {
-      gap: clamp(.9rem, 1.8vw, 1.5rem);
+      display: flex;
+      align-items: center;
+      gap: clamp(.72rem, 1.4vw, 1.15rem);
+      flex: 1 1 auto;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
+    .navbar-nav::-webkit-scrollbar { display: none; }
     .navbar-nav a {
-      font-size: .73rem;
-      letter-spacing: .12em;
+      font-size: .67rem;
+      letter-spacing: .1em;
       color: rgba(253,250,246,.72);
+      white-space: nowrap;
+      padding: .12rem 0;
     }
     .navbar-nav a::after { background: var(--c-primary); }
     .navbar-nav a:hover { color: #fff; }
-    .navbar-actions { gap: .55rem; }
+    .navbar-actions {
+      gap: .55rem;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
     .navbar-cta {
       display: inline-flex;
       opacity: 1;
       transform: none;
       pointer-events: auto;
-      padding: .72rem 1.15rem;
-      font-size: .66rem;
+      padding: .58rem .92rem;
+      font-size: .6rem;
       letter-spacing: .12em;
       background: rgba(201,145,140,.16);
       border: 1px solid rgba(201,145,140,.34);
@@ -2492,65 +2465,20 @@
       background: rgba(201,145,140,.26);
       box-shadow: none;
     }
-    .navbar-hamburger {
-      border-radius: 999px;
-      border: 1px solid rgba(255,244,240,.18);
-      padding: .55rem;
-      background: rgba(255,244,240,.05);
-    }
-    .navbar-hamburger span {
-      width: 19px;
-      background: #FDFAF6;
-    }
-    .mobile-menu {
-      inset: 0;
-      padding: calc(env(safe-area-inset-top, 0px) + 5.3rem) 1.4rem 2rem;
-      background:
-        linear-gradient(180deg, rgba(90,64,58,.98) 0%, rgba(72,50,46,.98) 100%);
-      align-items: stretch;
-      justify-content: flex-start;
-      gap: .6rem;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-family: var(--f-body);
-      font-size: 1rem;
-      color: #FDFAF6;
-      padding: 1rem 1.15rem;
-      border-radius: var(--radius-lg);
-      border: 1px solid rgba(201,145,140,.16);
-      background: rgba(253,250,246,.03);
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .mobile-menu .btn { margin-top: .9rem; justify-content: center; }
-    .mobile-menu-close {
-      top: calc(env(safe-area-inset-top, 0px) + 1rem);
-      right: 1rem;
-      width: 42px;
-      height: 42px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      border: 1px solid rgba(201,169,110,.15);
-      color: #FDFAF6;
-      background: rgba(253,250,246,.04);
-    }
     .hero {
       min-height: min(100svh, 920px);
-      padding-top: calc(88px + env(safe-area-inset-top, 0px));
+      padding-top: calc(72px + env(safe-area-inset-top, 0px));
       background: #5A403A;
     }
     .hero-bg-image {
       background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp');
       background-size: cover;
-      background-position: 68% center;
+      background-position: 76% center;
       filter: saturate(.95) contrast(1.01);
     }
     .hero-bg-overlay {
       background:
-        linear-gradient(90deg, rgba(72,50,46,.88) 0%, rgba(72,50,46,.72) 42%, rgba(72,50,46,.22) 76%, rgba(72,50,46,.08) 100%),
+        linear-gradient(90deg, rgba(72,50,46,.96) 0%, rgba(72,50,46,.9) 34%, rgba(72,50,46,.58) 56%, rgba(72,50,46,.16) 82%, rgba(72,50,46,.06) 100%),
         linear-gradient(180deg, rgba(72,50,46,.22) 0%, rgba(72,50,46,.28) 100%);
     }
     .hero .container { position: relative; z-index: 1; }
@@ -2623,12 +2551,12 @@
       margin-top: 1rem;
     }
     .hero-checks li {
-      padding: .5rem .8rem;
+      padding: .46rem .72rem;
       border: 1px solid rgba(253,250,246,.18);
       border-radius: var(--radius-full);
       background: rgba(253,250,246,.08);
       color: #FDFAF6;
-      font-size: .72rem;
+      font-size: .68rem;
       letter-spacing: .04em;
       text-transform: uppercase;
     }
@@ -2823,6 +2751,13 @@
       gap: .45rem;
       margin-top: 1rem;
     }
+    .section-cta,
+    .quiz-header-actions,
+    .timeline-actions {
+      display: flex;
+      justify-content: center;
+      margin-top: 1.15rem;
+    }
     .carousel-dots-inline button {
       width: 8px;
       height: 8px;
@@ -2910,7 +2845,7 @@
       gap: .7rem;
       overflow-x: auto;
       padding-bottom: .4rem;
-      margin-top: var(--s-2xl);
+      margin-top: var(--s-xl);
       scrollbar-width: none;
       scroll-snap-type: x proximity;
       -webkit-overflow-scrolling: touch;
@@ -2918,13 +2853,13 @@
     .service-tabs-bar::-webkit-scrollbar { display: none; }
     .service-tab {
       flex: 0 0 auto;
-      min-height: 44px;
-      padding: .8rem 1.15rem;
+      min-height: 40px;
+      padding: .68rem .95rem;
       border-radius: 18px 18px 10px 10px;
       border: 1px solid rgba(201,169,110,.18);
       background: rgba(255,255,255,.82);
       color: var(--c-text-muted);
-      font-size: .78rem;
+      font-size: .68rem;
       font-weight: 500;
       letter-spacing: .1em;
       text-transform: uppercase;
@@ -2945,22 +2880,23 @@
     }
     .service-panel[hidden] { display: none !important; }
     .service-panel-lead {
-      max-width: 38rem;
+      max-width: 31rem;
       color: var(--c-text-muted);
-      margin-bottom: 1.25rem;
+      font-size: .9rem;
+      margin-bottom: 1rem;
     }
     .service-panel-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--s-lg);
+      gap: 1rem;
     }
     .servico-card {
       display: flex;
       flex-direction: column;
-      gap: .9rem;
-      padding: 1.35rem;
+      gap: .65rem;
+      padding: 1.05rem;
       border: 1px solid var(--c-border);
-      border-radius: 20px;
+      border-radius: 18px;
       background: rgba(255,255,255,.92);
       box-shadow: var(--shadow-sm);
       transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
@@ -2980,37 +2916,40 @@
       color: var(--c-primary);
     }
     .servico-card h3 {
-      font-size: 1.42rem;
+      font-size: 1.16rem;
       margin: 0;
     }
     .servico-card p {
       color: var(--c-text-muted);
+      font-size: .88rem;
+      line-height: 1.45;
       margin: 0;
     }
     .servico-list {
       display: grid;
-      gap: .55rem;
+      gap: .35rem;
       margin: 0;
     }
     .servico-list li {
       position: relative;
-      padding-left: 1rem;
+      padding-left: .8rem;
       color: var(--c-text);
-      font-size: .91rem;
+      font-size: .84rem;
+      line-height: 1.4;
     }
     .servico-list li::before {
       content: '';
       position: absolute;
       left: 0;
-      top: .58rem;
-      width: 6px;
-      height: 6px;
+      top: .48rem;
+      width: 5px;
+      height: 5px;
       border-radius: 50%;
       background: var(--c-primary);
     }
     .service-method-callout {
-      margin-top: var(--s-2xl);
-      padding: clamp(1.4rem, 3vw, 2rem);
+      margin-top: var(--s-xl);
+      padding: 1.2rem 1.3rem;
       border-radius: 24px;
       border: 1px solid rgba(201,169,110,.24);
       background: linear-gradient(135deg, rgba(201,169,110,.12), rgba(253,250,246,.96));
@@ -3051,7 +2990,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: .8rem;
-      margin: var(--s-xl) 0;
+      margin: var(--s-lg) 0;
     }
     .specialist-bullet {
       display: flex;
@@ -3500,17 +3439,17 @@
       .navbar-cta { display: none; }
       .hero {
         min-height: auto;
-        padding-top: calc(82px + env(safe-area-inset-top, 0px));
+        padding-top: calc(70px + env(safe-area-inset-top, 0px));
       }
       .hero-inner--focused {
         min-height: auto;
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 72% center; }
+      .hero-bg-image { background-position: 81% center; }
       .hero-bg-overlay {
         background:
-          linear-gradient(90deg, rgba(72,50,46,.92) 0%, rgba(72,50,46,.84) 56%, rgba(72,50,46,.3) 100%),
+          linear-gradient(90deg, rgba(72,50,46,.96) 0%, rgba(72,50,46,.9) 62%, rgba(72,50,46,.34) 100%),
           linear-gradient(180deg, rgba(72,50,46,.18) 0%, rgba(72,50,46,.24) 100%);
       }
       .hero h1 {
@@ -3537,22 +3476,27 @@
       }
     }
     @media (max-width: 767px) {
-      section[id] { scroll-margin-top: calc(82px + env(safe-area-inset-top, 0px)); }
+      section[id] { scroll-margin-top: calc(64px + env(safe-area-inset-top, 0px)); }
       .navbar {
-        padding: calc(env(safe-area-inset-top, 0px) + .35rem) 0 .35rem;
+        padding: calc(env(safe-area-inset-top, 0px) + .14rem) 0 .16rem;
       }
       .navbar.scrolled {
-        padding: calc(env(safe-area-inset-top, 0px) + .2rem) 0 .28rem;
+        padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .12rem;
       }
-      .navbar-inner { min-height: 46px; }
-      .navbar-logo { width: 102px; }
+      .navbar-inner { min-height: 40px; }
+      .navbar-logo { width: 94px; }
+      .navbar-nav {
+        gap: .75rem;
+        margin-left: 0;
+      }
+      .navbar-nav a { font-size: .62rem; }
       .hero-kicker { display: none; }
       .hero-badge {
         max-width: 18rem;
         margin-bottom: .85rem;
         font-size: .66rem;
       }
-      .hero-content { max-width: 18.5rem; }
+      .hero-content { max-width: 17.8rem; }
       .hero-ctas {
         flex-direction: column;
         align-items: stretch;
@@ -3583,6 +3527,9 @@
       }
       .quiz-actions { flex-direction: column; }
       .quiz-actions .btn { width: 100%; justify-content: center; }
+      .section-cta .btn,
+      .quiz-header-actions .btn,
+      .timeline-actions .btn { width: 100%; justify-content: center; }
       .location-actions { flex-direction: column; }
       .location-actions .btn { width: 100%; justify-content: center; }
       .service-tab {
@@ -3603,9 +3550,29 @@
       }
     }
     @media (max-width: 520px) {
-      .hero-bg-image { background-position: 71% center; }
+      .navbar {
+        padding: calc(env(safe-area-inset-top, 0px) + .14rem) 0 .18rem;
+      }
+      .navbar.scrolled {
+        padding: calc(env(safe-area-inset-top, 0px) + .1rem) 0 .14rem;
+      }
+      .navbar-inner {
+        min-height: 38px;
+        gap: .45rem;
+      }
+      .navbar-logo {
+        width: 68px;
+      }
+      .navbar-nav {
+        gap: .25rem;
+      }
+      .navbar-nav a {
+        font-size: .46rem;
+        letter-spacing: .02em;
+      }
+      .hero-bg-image { background-position: 84% center; }
       .hero h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
-      .hero-sub { max-width: 17.6rem; }
+      .hero-sub { max-width: 16.5rem; }
       .container { padding-inline: 1rem; }
       .ux-carousel-track { grid-auto-columns: minmax(87%, 1fr); }
     }
@@ -3620,6 +3587,7 @@
     <div class="loader-logo logo-bubble" style="width: 160px; margin-bottom: 20px;">
       <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852448/Jo_Souza_-_Mockup_PROT%C3%93TIPO_1_040326_1_s6oqnd.webp" alt="Jo Souza">
     </div>
+    <div class="loader-sub">Massoterapia</div>
     <div class="loader-line"></div>
   </div>
 
@@ -3655,35 +3623,18 @@
         <nav class="navbar-nav" aria-label="Navegação principal">
           <a href="#inicio">Início</a>
           <a href="#dores">Sinais</a>
-          <a href="#servicos">Protocolos</a>
-          <a href="#especialista">Especialista</a>
-          <a href="#como-funciona">Como funciona</a>
           <a href="#quiz">Quiz</a>
+          <a href="#especialista">Especialista</a>
+          <a href="#servicos">Protocolos</a>
+          <a href="#como-funciona">Como funciona</a>
           <a href="#localizacao">Localização</a>
         </nav>
         <div class="navbar-actions">
           <a href="#" class="btn navbar-cta wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis desta semana." target="_blank" rel="noopener" id="navbar-cta">Ver horários</a>
-          <button type="button" class="navbar-hamburger" id="hamburger-btn" aria-label="Abrir menu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
       </div>
     </div>
   </header>
-
-  <div class="mobile-menu" id="mobile-menu" aria-label="Menu mobile">
-    <button class="mobile-menu-close" id="mobile-close" aria-label="Fechar menu">✕</button>
-    <a href="#inicio" class="mobile-link">Início</a>
-    <a href="#dores" class="mobile-link">Sinais do corpo</a>
-    <a href="#servicos" class="mobile-link">Protocolos</a>
-    <a href="#especialista" class="mobile-link">Especialista</a>
-    <a href="#como-funciona" class="mobile-link">Como funciona</a>
-    <a href="#quiz" class="mobile-link">Pré-atendimento</a>
-    <a href="#localizacao" class="mobile-link">Localização</a>
-    <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero agendar um atendimento." target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
-  </div>
 
   <main id="conteudo-principal">
     <section class="hero has-texture" id="inicio">
@@ -3707,8 +3658,8 @@
             </div>
             <ul class="hero-checks animate">
               <li>Atendimento com hora marcada</li>
-              <li>Escuta antes do protocolo</li>
-              <li>Protocolos personalizados</li>
+              <li>Barra da Tijuca</li>
+              <li>Pré-atendimento pelo WhatsApp</li>
             </ul>
             <div class="hero-urgency animate"><strong>Horários limitados</strong> para atendimentos individualizados nesta semana.</div>
           </div>
@@ -3807,6 +3758,9 @@
           </div>
         </div>
         <div class="carousel-dots-inline" data-carousel-dots="sinais"></div>
+        <div class="section-cta animate">
+          <a href="#quiz" class="btn btn-outline">Descobrir o melhor cuidado</a>
+        </div>
       </div>
     </section>
 
@@ -3823,259 +3777,16 @@
     </div>
   </div>
 
-    <section class="servicos" id="servicos">
-      <div class="container">
-        <header class="servicos-header animate">
-          <span class="section-label">Protocolos</span>
-          <h2 class="section-title">Escolha o cuidado de acordo com o que seu corpo <em>precisa agora.</em></h2>
-          <p class="section-intro">A base do atendimento é consultiva: cada protocolo é sugerido conforme seu objetivo, sua rotina e o tipo de cuidado que faz sentido para o momento.</p>
-        </header>
-        <div class="service-tabs-bar animate" role="tablist" aria-label="Categorias de protocolos">
-          <button type="button" class="service-tab is-active" role="tab" data-service-tab="dor" aria-selected="true">Dor e tensão</button>
-          <button type="button" class="service-tab" role="tab" data-service-tab="relaxamento" aria-selected="false">Relaxamento</button>
-          <button type="button" class="service-tab" role="tab" data-service-tab="estetica" aria-selected="false">Estética corporal</button>
-          <button type="button" class="service-tab" role="tab" data-service-tab="tecnologias" aria-selected="false">Tecnologias</button>
-          <button type="button" class="service-tab" role="tab" data-service-tab="bemestar" aria-selected="false">Recuperação e bem-estar</button>
-        </div>
-        <div class="service-panels">
-        <div class="service-panel is-active" data-service-panel="dor" role="tabpanel">
-          <p class="service-panel-lead animate">Para momentos em que a prioridade é aliviar pontos de sobrecarga, travamento e desconforto muscular.</p>
-          <div class="service-panel-grid stagger">
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Massagem Terapêutica</h3>
-                <p>Indicada quando dor, rigidez ou tensão estão mais concentradas em regiões específicas.</p>
-                <ul class="servico-list">
-                  <li>Busca aliviar desconfortos percebidos e devolver mais liberdade de movimento no dia a dia.</li>
-                  <li>O protocolo é ajustado conforme a avaliação da sessão.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Massagem Terapêutica é o protocolo ideal para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Liberação de tensões localizada</h3>
-                <p>Uma direção de cuidado para quem sente pescoço, ombros, costas ou lombar mais sobrecarregados.</p>
-                <ul class="servico-list">
-                  <li>Ajuda a concentrar o atendimento onde o corpo mais pede atenção e soltura.</li>
-                  <li>A intensidade e a combinação de técnicas são definidas após a escuta inicial.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se a liberação de tensões localizada faz sentido para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-          </div>
-        </div>
-        <div class="service-panel" data-service-panel="relaxamento" role="tabpanel" hidden>
-          <p class="service-panel-lead animate">Para quem quer sair do modo de alerta, reduzir o acúmulo de tensão e sentir o corpo desacelerando.</p>
-          <div class="service-panel-grid stagger">
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Massagem Relaxante</h3>
-                <p>Voltada para quem sente o corpo cansado, tenso e com dificuldade de desligar da rotina.</p>
-                <ul class="servico-list">
-                  <li>Favorece sensação de descanso, leveza muscular e uma pausa mais presente para o corpo.</li>
-                  <li>A intensidade pode ser adaptada à sua preferência.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Massagem Relaxante é a melhor indicação para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Ritual de desaceleração</h3>
-                <p>Uma proposta para quem precisa de uma pausa acolhedora, com foco em presença, conforto e bem-estar.</p>
-                <ul class="servico-list">
-                  <li>Ideal para momentos em que o corpo pede leveza e um cuidado menos rígido.</li>
-                  <li>O formato é alinhado conforme sua preferência e sensibilidade.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se o Ritual de desaceleração é ideal para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-          </div>
-        </div>
-        <div class="service-panel" data-service-panel="estetica" role="tabpanel" hidden>
-          <p class="service-panel-lead animate">Quando o objetivo está ligado a autocuidado, leveza corporal e protocolos com foco estético.</p>
-          <div class="service-panel-grid stagger">
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Drenagem Linfática</h3>
-                <p>Uma possibilidade para quem sente retenção, inchaço ou peso corporal em determinados períodos.</p>
-                <ul class="servico-list">
-                  <li>Ajuda a construir sensação de leveza e bem-estar quando há indicação adequada.</li>
-                  <li>Contraindicações e contexto são avaliados no pré-atendimento.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Drenagem Linfática é indicada para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Massagem Modeladora</h3>
-                <p>Indicada para quem busca um protocolo corporal mais ativo dentro de uma proposta estética.</p>
-                <ul class="servico-list">
-                  <li>Pode ser considerada em objetivos de contorno corporal e autocuidado, sem promessas irreais.</li>
-                  <li>O atendimento respeita a sensibilidade do seu corpo.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se a Massagem Modeladora é ideal para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-          </div>
-        </div>
-        <div class="service-panel" data-service-panel="tecnologias" role="tabpanel" hidden>
-          <p class="service-panel-lead animate">Quando faz sentido combinar recursos complementares com foco em cuidado corporal, firmeza e estratégia de atendimento.</p>
-          <div class="service-panel-grid stagger">
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Criofrequência</h3>
-                <p>Tecnologia corporal que entra de forma consultiva quando o objetivo pede uma orientação estética complementar.</p>
-                <ul class="servico-list">
-                  <li>A indicação depende do objetivo, da avaliação inicial e do momento do seu corpo.</li>
-                  <li>O protocolo é explicado com clareza antes de qualquer agendamento.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Criofrequência é indicada para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Tecnologias corporais complementares</h3>
-                <p>Para quando a avaliação mostra que recursos complementares podem compor um cuidado corporal mais estratégico.</p>
-                <ul class="servico-list">
-                  <li>A combinação é definida com segurança e sem promessas exageradas.</li>
-                  <li>Os detalhes são alinhados no pré-atendimento, conforme objetivo e disponibilidade.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero orientação sobre tecnologias corporais complementares." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-          </div>
-        </div>
-        <div class="service-panel" data-service-panel="bemestar" role="tabpanel" hidden>
-          <p class="service-panel-lead animate">Para rotinas intensas, cansaço acumulado e momentos em que o corpo pede recuperação, soltura e orientação.</p>
-          <div class="service-panel-grid stagger">
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Recuperação muscular e bem-estar</h3>
-                <p>Um cuidado pensado para quem sente o corpo pesado, cansado ou sobrecarregado pela rotina intensa.</p>
-                <ul class="servico-list">
-                  <li>Pode favorecer soltura, conforto e uma percepção maior de leveza corporal.</li>
-                  <li>A direção do atendimento é definida conforme sua queixa e seu momento atual.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se um atendimento de recuperação muscular e bem-estar é ideal para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-              <article class="servico-card animate-scale">
-                <span class="servico-tag">Protocolo consultivo</span>
-                <h3>Orientação de protocolo</h3>
-                <p>Ideal para quem ainda não sabe qual cuidado escolher e prefere receber uma indicação mais clara antes de agendar.</p>
-                <ul class="servico-list">
-                  <li>Evita decisões por impulso e transforma a escolha em uma conversa consultiva e objetiva.</li>
-                  <li>Pode ser feita diretamente pelo WhatsApp.</li>
-                </ul>
-                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber qual protocolo pode ser mais coerente para mim." target="_blank" rel="noopener">Quero saber se esse protocolo é ideal para mim</a>
-              </article>
-          </div>
-        </div>
-        </div>
-        <aside class="service-method-callout animate">
-          <span class="section-label">Cuidado personalizado</span>
-          <h3 class="service-group-name">Um atendimento que começa pela escuta do corpo.</h3>
-          <p>Antes de definir o protocolo, a Jo considera suas queixas, sua rotina, o objetivo principal do atendimento e o tipo de sensação que você busca. Isso evita uma experiência genérica e ajuda a indicar o cuidado com mais coerência.</p>
-        </aside>
-      </div>
-    </section>
-
-    <section class="especialista has-texture" id="especialista">
-      <div class="container">
-        <div class="especialista-inner especialista-inner--clean">
-          <div class="especialista-left animate-left">
-            <div class="especialista-image-wrap mask-reveal">
-              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852767/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_1_bsebip.webp" alt="Jo Souza em ambiente de atendimento" loading="lazy" decoding="async">
-            </div>
-          </div>
-          <div class="especialista-right animate-right">
-            <span class="section-label">Especialista</span>
-            <h2 class="section-title">Acolhimento, escuta e um cuidado pensado para o que seu corpo <em>precisa agora.</em></h2>
-            <p class="especialista-copy">
-              Jo Souza conduz um atendimento voltado para bem-estar, leveza e autocuidado. A proposta não é encaixar você em uma sessão padrão, mas entender o que seu corpo pede hoje para indicar um cuidado coerente com sua queixa, sua rotina e seu objetivo.
-            </p>
-            <div class="specialist-bullets">
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Atendimento pensado para o que seu corpo precisa hoje</span>
-              </div>
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Escuta antes da indicação do protocolo</span>
-              </div>
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Cuidado voltado para bem-estar, leveza e autocuidado</span>
-              </div>
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Atendimento com hora marcada</span>
-              </div>
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Ambiente acolhedor na Barra da Tijuca</span>
-              </div>
-              <div class="specialist-bullet">
-                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
-                <span>Orientação clara pelo WhatsApp antes do agendamento</span>
-              </div>
-            </div>
-            <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber qual protocolo pode ser ideal para mim." target="_blank" rel="noopener">Quero saber o protocolo ideal</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  <div class="roller roller-inline" style="--roller-duration:32s;">
-    <div class="roller-track">
-      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
-      <span class="roller-item"><span class="roller-dot"></span>Protocolos personalizados</span>
-      <span class="roller-item"><span class="roller-dot"></span>Ambiente acolhedor na Barra</span>
-      <span class="roller-item"><span class="roller-dot"></span>Leveza, bem-estar e autocuidado</span>
-      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
-      <span class="roller-item"><span class="roller-dot"></span>Protocolos personalizados</span>
-      <span class="roller-item"><span class="roller-dot"></span>Ambiente acolhedor na Barra</span>
-      <span class="roller-item"><span class="roller-dot"></span>Leveza, bem-estar e autocuidado</span>
-    </div>
-  </div>
-
-    <section class="como-funciona" id="como-funciona">
-      <div class="container">
-        <header class="como-funciona-header animate">
-          <span class="section-label">Como funciona</span>
-          <h2 class="section-title">Um processo simples para você não precisar escolher sozinha o melhor <em>cuidado.</em></h2>
-        </header>
-        <p class="timeline-caption animate">Do primeiro contato até a confirmação do horário, tudo foi pensado para deixar a decisão mais leve, acolhida e orientada.</p>
-        <div class="timeline" id="timeline">
-          <div class="timeline-progress" aria-hidden="true"></div>
-          <article class="timeline-step animate" data-timeline-step data-step-index="0">
-            <div class="timeline-dot">01</div>
-            <h3>Você chama no WhatsApp</h3>
-            <p>O primeiro contato já serve para contar o que está sentindo e o que você quer cuidar primeiro.</p>
-          </article>
-          <article class="timeline-step animate" data-timeline-step data-step-index="1">
-            <div class="timeline-dot">02</div>
-            <h3>Faz um pré-atendimento rápido</h3>
-            <p>Algumas perguntas simples ajudam a entender seu objetivo, a região principal e a urgência do atendimento.</p>
-          </article>
-          <article class="timeline-step animate" data-timeline-step data-step-index="2">
-            <div class="timeline-dot">03</div>
-            <h3>A Jo entende sua necessidade</h3>
-            <p>Com esse contexto, fica mais claro qual direção de cuidado faz sentido para o seu corpo neste momento.</p>
-          </article>
-          <article class="timeline-step animate" data-timeline-step data-step-index="3">
-            <div class="timeline-dot">04</div>
-            <h3>O cuidado mais indicado é sugerido</h3>
-            <p>A orientação não sai de uma lista genérica: ela considera rotina, queixa principal e o resultado percebido que você busca.</p>
-          </article>
-          <article class="timeline-step animate" data-timeline-step data-step-index="4">
-            <div class="timeline-dot">05</div>
-            <h3>Você agenda seu horário</h3>
-            <p>Depois disso, basta confirmar a agenda disponível e combinar o atendimento com hora marcada.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="quiz-section" id="quiz">
       <div class="container">
         <header class="quiz-header animate">
           <span class="section-label">Pré-atendimento</span>
-          <h2 class="section-title">Se preferir, responda rápido e envie seu contexto para a Jo pelo <em>WhatsApp.</em></h2>
-          <p class="section-intro">São poucas respostas para facilitar a orientação inicial antes do agendamento.</p>
+          <h2 class="section-title">Quer entender qual cuidado combina melhor com o que você sente <em>hoje?</em></h2>
+          <p class="section-intro">Responda rápido e envie seu contexto para a Jo pelo WhatsApp antes do agendamento.</p>
           <div class="quiz-note">Agenda da semana preenchida por ordem de agendamento.</div>
+          <div class="quiz-header-actions">
+            <a href="#quiz-step-1" class="btn btn-outline">Responder pré-atendimento</a>
+          </div>
         </header>
         <div class="quiz-box animate">
           <div class="quiz-progress">
@@ -4102,14 +3813,14 @@
                 <span class="quiz-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c2.7 3.3 5 6 5 9a5 5 0 0 1-10 0c0-3 2.3-5.7 5-9Z"/><path d="M9 13c.3 1.4 1.2 2.3 2.7 2.8"/></svg></span>
                 <span class="quiz-option-copy">
                   <strong>Reduzir inchaço ou sensação de peso</strong>
-                  <small>Se o incômodo está mais ligado à retenção e leveza corporal.</small>
+                  <small>Quando a leveza corporal é sua prioridade.</small>
                 </span>
               </button>
               <button type="button" class="quiz-option" data-step="1" data-label="Cuidar da estética corporal" aria-pressed="false">
                 <span class="quiz-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
                 <span class="quiz-option-copy">
                   <strong>Cuidar da estética corporal</strong>
-                  <small>Quando o foco está em autocuidado e protocolos estéticos.</small>
+                  <small>Quando o foco está em autocuidado e firmeza.</small>
                 </span>
               </button>
               <button type="button" class="quiz-option" data-step="1" data-label="Soltar o corpo e recuperar o bem-estar" aria-pressed="false">
@@ -4123,7 +3834,7 @@
                 <span class="quiz-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v9H9l-4 3V6Z"/><path d="M8 10h8"/><path d="M8 13h5"/></svg></span>
                 <span class="quiz-option-copy">
                   <strong>Tirar dúvidas antes de agendar</strong>
-                  <small>Se você ainda não sabe qual atendimento faz mais sentido.</small>
+                  <small>Se você ainda quer conversar com calma antes de decidir.</small>
                 </span>
               </button>
             </div>
@@ -4149,7 +3860,7 @@
                 <span class="quiz-option-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4c0 2.5.6 5.2 1.8 8.2"/><path d="M15 4c0 2.5-.6 5.2-1.8 8.2"/><path d="M10.8 12.2 9.5 20"/><path d="M13.2 12.2 14.5 20"/></svg></span>
                 <span class="quiz-option-copy">
                   <strong>Pernas</strong>
-                  <small>Para sensação de peso, cansaço ou cuidado específico.</small>
+                  <small>Para sensação de peso, cansaço ou drenagem.</small>
                 </span>
               </button>
               <button type="button" class="quiz-option" data-step="2" data-label="Corpo todo" aria-pressed="false">
@@ -4231,6 +3942,237 @@
               <button type="button" id="quiz-restart" class="btn btn-outline">Refazer quiz</button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="especialista has-texture" id="especialista">
+      <div class="container">
+        <div class="especialista-inner especialista-inner--clean">
+          <div class="especialista-left animate-left">
+            <div class="especialista-image-wrap mask-reveal">
+              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852767/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_1_bsebip.webp" alt="Jo Souza em ambiente de atendimento" loading="lazy" decoding="async">
+            </div>
+          </div>
+          <div class="especialista-right animate-right">
+            <span class="section-label">Especialista</span>
+            <h2 class="section-title">Acolhimento, escuta e um cuidado pensado para o que seu corpo <em>precisa agora.</em></h2>
+            <p class="especialista-copy">
+              Jo Souza conduz um atendimento voltado para bem-estar, leveza e autocuidado. A proposta é entender seu momento antes de sugerir o cuidado mais coerente para a sua rotina e para o que você quer sentir.
+            </p>
+            <div class="specialist-bullets">
+              <div class="specialist-bullet">
+                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
+                <span>Atendimento individualizado</span>
+              </div>
+              <div class="specialist-bullet">
+                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
+                <span>Escuta antes do protocolo</span>
+              </div>
+              <div class="specialist-bullet">
+                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
+                <span>Ambiente acolhedor na Barra da Tijuca</span>
+              </div>
+              <div class="specialist-bullet">
+                <span class="specialist-bullet-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.2 3.8L17 8l-3.8 1.2L12 13l-1.2-3.8L7 8l3.8-1.2Z"/><path d="M18 14l.7 2.3L21 17l-2.3.7L18 20l-.7-2.3L15 17l2.3-.7Z"/><path d="M6 14l.5 1.8L8.3 16l-1.8.5L6 18.3l-.5-1.8L3.7 16l1.8-.2Z"/></svg></span>
+                <span>Orientação pelo WhatsApp antes do agendamento</span>
+              </div>
+            </div>
+            <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero conversar antes de agendar um atendimento." target="_blank" rel="noopener">Conversar com a Jô</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <div class="roller roller-inline" style="--roller-duration:32s;">
+    <div class="roller-track">
+      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
+      <span class="roller-item"><span class="roller-dot"></span>Protocolos personalizados</span>
+      <span class="roller-item"><span class="roller-dot"></span>Ambiente acolhedor na Barra</span>
+      <span class="roller-item"><span class="roller-dot"></span>Leveza, bem-estar e autocuidado</span>
+      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
+      <span class="roller-item"><span class="roller-dot"></span>Protocolos personalizados</span>
+      <span class="roller-item"><span class="roller-dot"></span>Ambiente acolhedor na Barra</span>
+      <span class="roller-item"><span class="roller-dot"></span>Leveza, bem-estar e autocuidado</span>
+    </div>
+  </div>
+
+    <section class="servicos" id="servicos">
+      <div class="container">
+        <header class="servicos-header animate">
+          <span class="section-label">Protocolos</span>
+          <h2 class="section-title">Escolha o cuidado de acordo com o que seu corpo <em>precisa agora.</em></h2>
+          <p class="section-intro">Protocolos organizados de forma consultiva, com linguagem direta e foco no que faz sentido para o seu momento.</p>
+        </header>
+        <div class="service-tabs-bar animate" role="tablist" aria-label="Categorias de protocolos">
+          <button type="button" class="service-tab is-active" role="tab" data-service-tab="tecnologias" aria-selected="true">Tecnologias</button>
+          <button type="button" class="service-tab" role="tab" data-service-tab="relaxamento" aria-selected="false">Relaxamento</button>
+          <button type="button" class="service-tab" role="tab" data-service-tab="dor" aria-selected="false">Dor e tensão</button>
+          <button type="button" class="service-tab" role="tab" data-service-tab="estetica" aria-selected="false">Estética corporal</button>
+          <button type="button" class="service-tab" role="tab" data-service-tab="bemestar" aria-selected="false">Bem-estar</button>
+        </div>
+        <div class="service-panels">
+        <div class="service-panel is-active" data-service-panel="tecnologias" role="tabpanel">
+          <p class="service-panel-lead animate">Tecnologias corporais complementares para quem busca cuidado estético com orientação segura.</p>
+          <div class="service-panel-grid stagger">
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Tecnologia em destaque</span>
+                <h3>Criofrequência</h3>
+                <p>Tecnologia corporal indicada para quem busca cuidado estético, firmeza e autocuidado com orientação profissional.</p>
+                <ul class="servico-list">
+                  <li>Indicação avaliada conforme objetivo e momento do seu corpo.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Criofrequência é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Complementar</span>
+                <h3>Tecnologias complementares</h3>
+                <p>Recursos corporais que podem entrar no cuidado quando a avaliação mostra que fazem sentido.</p>
+                <ul class="servico-list">
+                  <li>Tudo é alinhado de forma clara antes do agendamento.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender quais tecnologias complementares podem fazer sentido para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+          </div>
+        </div>
+        <div class="service-panel" data-service-panel="relaxamento" role="tabpanel" hidden>
+          <p class="service-panel-lead animate">Para quando a prioridade é desacelerar, aliviar o estresse e sair com sensação de leveza.</p>
+          <div class="service-panel-grid stagger">
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Relaxamento</span>
+                <h3>Massagem Relaxante</h3>
+                <p>Indicada para quem sente o corpo cansado, tenso e com dificuldade de desligar da rotina.</p>
+                <ul class="servico-list">
+                  <li>Favorece pausa, conforto e descanso corporal.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Massagem Relaxante é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Bem-estar</span>
+                <h3>Ritual de desaceleração</h3>
+                <p>Uma proposta acolhedora para quem quer presença, conforto e um momento real de autocuidado.</p>
+                <ul class="servico-list">
+                  <li>Formato alinhado de acordo com sua preferência.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se o Ritual de desaceleração é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+          </div>
+        </div>
+        <div class="service-panel" data-service-panel="dor" role="tabpanel" hidden>
+          <p class="service-panel-lead animate">Para aliviar pontos de sobrecarga, rigidez e tensões que atrapalham o dia.</p>
+          <div class="service-panel-grid stagger">
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Dor e tensão</span>
+                <h3>Massagem Terapêutica</h3>
+                <p>Indicada quando dor, rigidez ou tensão aparecem de forma mais localizada.</p>
+                <ul class="servico-list">
+                  <li>Ajuda a devolver conforto e liberdade de movimento.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Massagem Terapêutica é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Localizado</span>
+                <h3>Liberação de tensões</h3>
+                <p>Para pescoço, ombros, costas ou lombar quando o corpo pede soltura mais direcionada.</p>
+                <ul class="servico-list">
+                  <li>A direção do cuidado é ajustada após a escuta inicial.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero entender se a liberação de tensões é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+          </div>
+        </div>
+        <div class="service-panel" data-service-panel="estetica" role="tabpanel" hidden>
+          <p class="service-panel-lead animate">Quando o foco está em autocuidado corporal, leveza e protocolos estéticos complementares.</p>
+          <div class="service-panel-grid stagger">
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Estética corporal</span>
+                <h3>Drenagem Linfática</h3>
+                <p>Uma possibilidade para quem sente retenção, inchaço ou peso corporal em determinados períodos.</p>
+                <ul class="servico-list">
+                  <li>Ajuda a construir sensação de leveza quando há indicação adequada.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Drenagem Linfática é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Estética corporal</span>
+                <h3>Massagem Modeladora</h3>
+                <p>Voltada para quem busca um protocolo corporal mais ativo dentro de uma proposta estética.</p>
+                <ul class="servico-list">
+                  <li>O cuidado respeita a sensibilidade do seu corpo.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se a Massagem Modeladora é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+          </div>
+        </div>
+        <div class="service-panel" data-service-panel="bemestar" role="tabpanel" hidden>
+          <p class="service-panel-lead animate">Para rotinas intensas, cansaço acumulado e momentos em que o corpo pede recuperação e leveza.</p>
+          <div class="service-panel-grid stagger">
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Bem-estar</span>
+                <h3>Recuperação corporal</h3>
+                <p>Um cuidado pensado para quem sente o corpo pesado, cansado ou sobrecarregado pela rotina intensa.</p>
+                <ul class="servico-list">
+                  <li>Favorece soltura, conforto e sensação de bem-estar.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber se um atendimento de recuperação corporal é ideal para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+              <article class="servico-card animate-scale">
+                <span class="servico-tag">Consultivo</span>
+                <h3>Orientação de protocolo</h3>
+                <p>Ideal para quem ainda não sabe qual cuidado escolher e quer uma indicação mais clara.</p>
+                <ul class="servico-list">
+                  <li>Pode ser feita diretamente pelo WhatsApp.</li>
+                </ul>
+                <a href="#" class="btn btn-outline wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero saber qual protocolo pode ser mais coerente para mim." target="_blank" rel="noopener">Quero saber se é ideal para mim</a>
+              </article>
+          </div>
+        </div>
+        </div>
+        <aside class="service-method-callout animate">
+          <span class="section-label">Cuidado personalizado</span>
+          <h3 class="service-group-name">Cada indicação começa pela escuta do corpo.</h3>
+          <p>Antes de sugerir o protocolo, a Jo considera sua queixa, sua rotina e o tipo de sensação que você busca para deixar a escolha mais clara.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="como-funciona" id="como-funciona">
+      <div class="container">
+        <header class="como-funciona-header animate">
+          <span class="section-label">Como funciona</span>
+          <h2 class="section-title">Um processo simples para você não precisar escolher sozinha o melhor <em>cuidado.</em></h2>
+        </header>
+        <p class="timeline-caption animate">Do primeiro contato até a confirmação do horário, tudo foi pensado para deixar a decisão mais leve, acolhida e orientada.</p>
+        <div class="timeline" id="timeline">
+          <div class="timeline-progress" aria-hidden="true"></div>
+          <article class="timeline-step animate" data-timeline-step data-step-index="0">
+            <div class="timeline-dot">01</div>
+            <h3>Você chama no WhatsApp</h3>
+            <p>O primeiro contato já serve para contar o que está sentindo e o que você quer cuidar primeiro.</p>
+          </article>
+          <article class="timeline-step animate" data-timeline-step data-step-index="1">
+            <div class="timeline-dot">02</div>
+            <h3>Faz um pré-atendimento rápido</h3>
+            <p>Algumas perguntas simples ajudam a entender seu objetivo, a região principal e a urgência do atendimento.</p>
+          </article>
+          <article class="timeline-step animate" data-timeline-step data-step-index="2">
+            <div class="timeline-dot">03</div>
+            <h3>A Jo entende sua necessidade</h3>
+            <p>Com esse contexto, fica mais claro qual direção de cuidado faz sentido para o seu corpo neste momento.</p>
+          </article>
+          <article class="timeline-step animate" data-timeline-step data-step-index="3">
+            <div class="timeline-dot">04</div>
+            <h3>O cuidado mais indicado é sugerido</h3>
+            <p>A orientação considera sua rotina, sua principal queixa e o resultado percebido que você busca.</p>
+          </article>
+          <article class="timeline-step animate" data-timeline-step data-step-index="4">
+            <div class="timeline-dot">05</div>
+            <h3>Você agenda seu horário</h3>
+            <p>Depois disso, basta confirmar a agenda disponível e combinar o atendimento com hora marcada.</p>
+          </article>
+        </div>
+        <div class="timeline-actions animate">
+          <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis para atendimento." target="_blank" rel="noopener">Ver horários disponíveis</a>
         </div>
       </div>
     </section>
@@ -4351,7 +4293,7 @@
             </div>
             <div class="location-actions">
               <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero falar sobre atendimento na Barra da Tijuca." target="_blank" rel="noopener">Chamar no WhatsApp</a>
-              <a href="https://www.google.com/maps/dir/?api=1&destination=Av.%20Evandro%20Lins%20e%20Silva%2C%20840%20-%20Barra%20da%20Tijuca%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022631-470" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Abrir rota no Google Maps</a>
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Av.%20Evandro%20Lins%20e%20Silva%2C%20840%20-%20Barra%20da%20Tijuca%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022631-470" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Abrir rota</a>
             </div>
           </div>
           <div class="location-map-card animate-right">
@@ -4361,29 +4303,34 @@
       </div>
     </section>
 
-  <div class="roller roller-inline roller-inline--contrast" style="--roller-duration:30s;">
-    <div class="roller-track">
-      <span class="roller-item"><span class="roller-dot"></span>Horários limitados para atendimentos individuais</span>
-      <span class="roller-item"><span class="roller-dot"></span>Agenda da semana preenchida por ordem de agendamento</span>
-      <span class="roller-item"><span class="roller-dot"></span>Seu corpo merece atenção e leveza</span>
-      <span class="roller-item"><span class="roller-dot"></span>Horários limitados para atendimentos individuais</span>
-      <span class="roller-item"><span class="roller-dot"></span>Agenda da semana preenchida por ordem de agendamento</span>
-      <span class="roller-item"><span class="roller-dot"></span>Seu corpo merece atenção e leveza</span>
-    </div>
-  </div>
-
     <section class="cta-final">
       <div class="container">
         <span class="section-label animate">Agendamento</span>
         <h2 class="animate">Seu corpo merece mais leveza, presença e <em>cuidado.</em></h2>
         <p class="animate">Chame no WhatsApp, conte o que você está sentindo e receba uma orientação inicial para escolher o atendimento mais coerente para o seu momento.</p>
         <div class="cta-final-actions animate">
-          <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis para atendimento." target="_blank" rel="noopener">Ver horários disponíveis</a>
+          <a href="#" class="btn btn-whatsapp wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero agendar meu atendimento." target="_blank" rel="noopener">Agendar meu atendimento</a>
           <a href="#quiz" class="btn btn-outline">Fazer pré-atendimento</a>
         </div>
         <div class="cta-micro animate">Consulte disponibilidade pelo WhatsApp.</div>
       </div>
     </section>
+  <div class="roller roller-inline roller-inline--contrast" style="--roller-duration:30s;">
+    <div class="roller-track">
+      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
+      <span class="roller-item"><span class="roller-dot"></span>Barra da Tijuca</span>
+      <span class="roller-item"><span class="roller-dot"></span>Bem-estar, leveza e autocuidado</span>
+      <span class="roller-item"><span class="roller-dot"></span>Pré-atendimento pelo WhatsApp</span>
+      <span class="roller-item"><span class="roller-dot"></span>Agenda da semana por ordem de agendamento</span>
+      <span class="roller-item"><span class="roller-dot"></span>Jo Souza Massoterapia</span>
+      <span class="roller-item"><span class="roller-dot"></span>Atendimento com hora marcada</span>
+      <span class="roller-item"><span class="roller-dot"></span>Barra da Tijuca</span>
+      <span class="roller-item"><span class="roller-dot"></span>Bem-estar, leveza e autocuidado</span>
+      <span class="roller-item"><span class="roller-dot"></span>Pré-atendimento pelo WhatsApp</span>
+      <span class="roller-item"><span class="roller-dot"></span>Agenda da semana por ordem de agendamento</span>
+      <span class="roller-item"><span class="roller-dot"></span>Jo Souza Massoterapia</span>
+    </div>
+  </div>
   </main>
 
   <footer class="footer">
@@ -4400,10 +4347,10 @@
           <div class="footer-quick">
             <a href="#inicio">Início</a>
             <a href="#dores">Sinais do corpo</a>
-            <a href="#servicos">Protocolos</a>
-            <a href="#especialista">Especialista</a>
-            <a href="#como-funciona">Como funciona</a>
             <a href="#quiz">Quiz</a>
+            <a href="#especialista">Especialista</a>
+            <a href="#servicos">Protocolos</a>
+            <a href="#como-funciona">Como funciona</a>
             <a href="#localizacao">Localização</a>
           </div>
           <div class="footer-cta" style="margin-top:var(--s-lg);">
@@ -4574,29 +4521,6 @@
     window.addEventListener('resize', measure);
     window.addEventListener('load', measure);
     measure();
-  })();
-
-  (function() {
-    var button = document.getElementById('hamburger-btn');
-    var menu = document.getElementById('mobile-menu');
-    var closeButton = document.getElementById('mobile-close');
-    if (!button || !menu || !closeButton) return;
-
-    function open() {
-      menu.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function close() {
-      menu.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    button.addEventListener('click', open);
-    closeButton.addEventListener('click', close);
-    menu.querySelectorAll('.mobile-link, .wa-link').forEach(function(link) {
-      link.addEventListener('click', close);
-    });
   })();
 
   (function() {
