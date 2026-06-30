@@ -3455,7 +3455,11 @@
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 76% center; }
+      .hero-bg-image {
+        background-position: 88% center;
+        background-size: auto 98%;
+        background-repeat: no-repeat;
+      }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(54,35,31,.88) 0%, rgba(54,35,31,.72) 42%, rgba(54,35,31,.24) 68%, rgba(54,35,31,.03) 100%);
       }
@@ -3490,12 +3494,12 @@
       .navbar.scrolled {
         padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .1rem;
       }
-      .navbar .container { padding-inline: 1.2rem; }
+      .navbar .container { padding-inline: 1.42rem; }
       .navbar-inner {
         min-height: 38px;
         gap: .7rem;
       }
-      .navbar-logo { width: 74px; }
+      .navbar-logo { width: 68px; }
       .navbar-nav { display: none !important; }
       .navbar-actions {
         margin-left: auto;
@@ -3572,13 +3576,16 @@
       }
     }
     @media (max-width: 520px) {
-      .navbar .container { padding-inline: 1.28rem; }
-      .navbar-logo { width: 70px; }
+      .navbar .container { padding-inline: 1.52rem; }
+      .navbar-logo { width: 62px; }
       .navbar-cta {
         padding: .42rem .64rem;
         font-size: .5rem;
       }
-      .hero-bg-image { background-position: 74% center; }
+      .hero-bg-image {
+        background-position: 94% center;
+        background-size: auto 95%;
+      }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(54,35,31,.9) 0%, rgba(54,35,31,.74) 48%, rgba(54,35,31,.18) 76%, rgba(54,35,31,.02) 100%);
       }
