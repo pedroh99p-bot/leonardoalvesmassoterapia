@@ -7,13 +7,13 @@
   <title>Jo Souza | Massoterapia na Barra da Tijuca</title>
   <meta property="og:title" content="Jo Souza | Massoterapia na Barra da Tijuca">
   <meta property="og:description" content="Massoterapia na Barra da Tijuca com atendimentos pensados para relaxamento, alívio de tensões, estética corporal e autocuidado.">
-  <meta property="og:image" content="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp">
+  <meta property="og:image" content="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861671/ChatGPT_Image_Jun_30_2026_08_19_11_PM_hzcmd5.webp">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp">
+  <meta name="twitter:image" content="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861671/ChatGPT_Image_Jun_30_2026_08_19_11_PM_hzcmd5.webp">
   <!-- SUBSTITUA og:url quando o domínio for definido: <meta property="og:url" content="https://seudominio.com.br"> -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -26,7 +26,7 @@
     "@type": "HealthAndBeautyBusiness",
     "name": "Jo Souza - Massoterapeuta",
     "description": "Atendimento individualizado de massoterapia na Barra da Tijuca, com foco em bem-estar, leveza corporal e cuidado personalizado.",
-    "image": "https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp",
+    "image": "https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861671/ChatGPT_Image_Jun_30_2026_08_19_11_PM_hzcmd5.webp",
     "telephone": "+55 21 96739-9264",
     "sameAs": [
       "https://www.instagram.com/josouzamassoterapia/"
@@ -351,6 +351,15 @@
     .animate-left.visible, .animate-right.visible { opacity: 1; transform: translateX(0); }
     .animate-scale { opacity: 0; transform: scale(0.94) translateY(20px); transition: opacity 0.75s var(--ease), transform 0.85s cubic-bezier(.22,1,.36,1); }
     .animate-scale.visible { opacity: 1; transform: scale(1) translateY(0); }
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s var(--ease), transform 0.95s cubic-bezier(.22,1,.36,1);
+    }
+    .section-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
     /* Mask reveal — para imagens (varredura dourada que some) */
     .mask-reveal { position: relative; overflow: hidden; }
     .mask-reveal::after {
@@ -1261,6 +1270,22 @@
       margin-inline: auto;
       margin-bottom: var(--s-2xl);
       font-weight: 300;
+    }
+    .cta-final-brand {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: 1rem;
+    }
+    .cta-final-brand .logo-bubble {
+      width: clamp(120px, 18vw, 170px);
+    }
+    .cta-final-brand-sub {
+      font-size: .74rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: rgba(253,250,246,.72);
     }
     .cta-final-actions {
       display: flex;
@@ -2411,11 +2436,16 @@
       -webkit-backdrop-filter: blur(14px);
       padding: calc(env(safe-area-inset-top, 0px) + .18rem) 0 .22rem;
       box-shadow: 0 1px 0 rgba(201,145,140,.16);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: background .45s var(--ease), box-shadow .45s var(--ease), padding .45s var(--ease), backdrop-filter .45s var(--ease), border-color .45s var(--ease);
     }
     .navbar.scrolled {
-      background: rgba(90,64,58,.96);
-      padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .18rem;
-      box-shadow: 0 8px 24px rgba(0,0,0,.15);
+      background: rgba(102,74,68,.48);
+      backdrop-filter: blur(18px) saturate(1.08);
+      -webkit-backdrop-filter: blur(18px) saturate(1.08);
+      padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .14rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,.14);
+      border-bottom-color: rgba(255,255,255,.12);
     }
     .navbar,
     .navbar * { box-sizing: border-box; }
@@ -2428,8 +2458,13 @@
       width: 100%;
     }
     .navbar-logo {
-      width: clamp(86px, 11vw, 110px);
+      width: clamp(78px, 9vw, 96px);
       flex-shrink: 0;
+      transition: width .45s var(--ease), transform .45s var(--ease), filter .45s var(--ease);
+    }
+    .navbar.scrolled .navbar-logo {
+      width: clamp(68px, 7.8vw, 82px);
+      transform: translateY(-1px);
     }
     .navbar-nav {
       display: flex;
@@ -2456,9 +2491,37 @@
     .navbar-nav a::after { background: var(--c-primary); }
     .navbar-nav a:hover { color: #fff; }
     .navbar-actions {
+      display: flex;
+      align-items: center;
       gap: .55rem;
       margin-left: auto;
       flex-shrink: 0;
+    }
+    .navbar-brand-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: clamp(132px, 15vw, 172px);
+      padding: .5rem .9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+      transition: transform .45s var(--ease), width .45s var(--ease), padding .45s var(--ease), background .45s var(--ease), border-color .45s var(--ease), box-shadow .45s var(--ease);
+    }
+    .navbar-brand-mark img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+    .navbar.scrolled .navbar-brand-mark {
+      width: clamp(114px, 13vw, 148px);
+      padding: .36rem .72rem;
+      transform: scale(.92);
+      background: rgba(255,255,255,.12);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 28px rgba(0,0,0,.08);
     }
     .navbar-cta {
       display: inline-flex;
@@ -2482,9 +2545,9 @@
       background: #5A403A;
     }
     .hero-bg-image {
-      background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852691/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_qgrguu.webp');
+      background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861671/ChatGPT_Image_Jun_30_2026_08_19_11_PM_hzcmd5.webp');
       background-size: cover;
-      background-position: 72% center;
+      background-position: 69% center;
       filter: saturate(.98) contrast(1.02);
     }
     .hero-bg-overlay {
@@ -3455,7 +3518,7 @@
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 62% center; }
+      .hero-bg-image { background-position: 64% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(54,35,31,.88) 0%, rgba(54,35,31,.72) 42%, rgba(54,35,31,.24) 68%, rgba(54,35,31,.03) 100%);
       }
@@ -3495,11 +3558,19 @@
         min-height: 38px;
         gap: .7rem;
       }
-      .navbar-logo { width: 74px; }
+      .navbar-logo { width: 64px; }
+      .navbar.scrolled .navbar-logo { width: 56px; }
       .navbar-nav { display: none !important; }
       .navbar-actions {
         margin-left: auto;
         flex-shrink: 0;
+      }
+      .navbar-brand-mark {
+        width: 120px;
+        padding: .4rem .72rem;
+      }
+      .navbar.scrolled .navbar-brand-mark {
+        width: 106px;
       }
       .navbar-cta {
         display: inline-flex;
@@ -3573,12 +3644,20 @@
     }
     @media (max-width: 520px) {
       .navbar .container { padding-inline: 1.28rem; }
-      .navbar-logo { width: 70px; }
+      .navbar-logo { width: 58px; }
+      .navbar.scrolled .navbar-logo { width: 52px; }
+      .navbar-brand-mark {
+        width: 112px;
+        padding: .34rem .62rem;
+      }
+      .navbar.scrolled .navbar-brand-mark {
+        width: 98px;
+      }
       .navbar-cta {
         padding: .42rem .64rem;
         font-size: .5rem;
       }
-      .hero-bg-image { background-position: 58% center; }
+      .hero-bg-image { background-position: 60% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(54,35,31,.9) 0%, rgba(54,35,31,.74) 48%, rgba(54,35,31,.18) 76%, rgba(54,35,31,.02) 100%);
       }
@@ -3638,6 +3717,9 @@
           <a href="#localizacao">Localização</a>
         </nav>
         <div class="navbar-actions">
+          <div class="navbar-brand-mark" aria-hidden="true">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861539/Jo_Souza_-_Mockup_PROT%C3%93TIPO_1_040326_1_1_uxdxs3.webp" alt="">
+          </div>
           <a href="#" class="btn navbar-cta wa-link" data-wa-message="Olá, vim pelo site da Jo Souza e quero ver os horários disponíveis desta semana." target="_blank" rel="noopener" id="navbar-cta">Agendar</a>
         </div>
       </div>
@@ -3681,7 +3763,7 @@
       </div>
     </section>
 
-    <section class="trust-strip" aria-label="Diferenciais principais">
+    <section class="trust-strip section-reveal" aria-label="Diferenciais principais">
       <div class="container">
         <div class="trust-grid">
           <div class="trust-item animate">Atendimento humanizado</div>
@@ -3692,7 +3774,7 @@
       </div>
     </section>
 
-    <section class="dores-section" id="dores">
+    <section class="dores-section section-reveal" id="dores">
       <div class="container">
         <header class="dores-header animate">
           <span class="section-label">Sinais do corpo</span>
@@ -3785,7 +3867,7 @@
     </div>
   </div>
 
-    <section class="quiz-section" id="quiz">
+    <section class="quiz-section section-reveal" id="quiz">
       <div class="container">
         <header class="quiz-header animate">
           <span class="section-label">Pré-atendimento</span>
@@ -3954,12 +4036,12 @@
       </div>
     </section>
 
-    <section class="especialista has-texture" id="especialista">
+    <section class="especialista has-texture section-reveal" id="especialista">
       <div class="container">
         <div class="especialista-inner especialista-inner--clean">
           <div class="especialista-left animate-left">
             <div class="especialista-image-wrap mask-reveal">
-              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782852767/5cc5b510-e39c-4050-a9b2-8a4ca379e76b_1_bsebip.webp" alt="Jo Souza em ambiente de atendimento" loading="lazy" decoding="async">
+              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861666/aa_ilvtvd.webp" alt="Jo Souza em ambiente de atendimento" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="especialista-right animate-right">
@@ -4005,7 +4087,7 @@
     </div>
   </div>
 
-    <section class="servicos" id="servicos">
+    <section class="servicos section-reveal" id="servicos">
       <div class="container">
         <header class="servicos-header animate">
           <span class="section-label">Protocolos</span>
@@ -4144,7 +4226,7 @@
       </div>
     </section>
 
-    <section class="como-funciona" id="como-funciona">
+    <section class="como-funciona section-reveal" id="como-funciona">
       <div class="container">
         <header class="como-funciona-header animate">
           <span class="section-label">Como funciona</span>
@@ -4185,7 +4267,7 @@
       </div>
     </section>
 
-    <section class="depoimentos" id="depoimentos">
+    <section class="depoimentos section-reveal" id="depoimentos">
       <div class="container">
         <header class="proof-header animate">
           <span class="section-label">Confiança</span>
@@ -4211,7 +4293,7 @@
       </div>
     </section>
 
-    <section class="faq" id="faq">
+    <section class="faq section-reveal" id="faq">
       <div class="container">
         <header class="faq-header animate">
           <span class="section-label">Dúvidas frequentes</span>
@@ -4278,7 +4360,7 @@
       </div>
     </section>
 
-    <section class="localizacao" id="localizacao">
+    <section class="localizacao section-reveal" id="localizacao">
       <div class="container">
         <div class="localizacao-inner localizacao-inner--mapped">
           <div class="location-copy animate-left">
@@ -4311,8 +4393,14 @@
       </div>
     </section>
 
-    <section class="cta-final">
+    <section class="cta-final section-reveal">
       <div class="container">
+        <div class="cta-final-brand animate-scale">
+          <div class="logo-bubble">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1782861539/Jo_Souza_-_Mockup_PROT%C3%93TIPO_1_040326_1_1_uxdxs3.webp" alt="Jo Souza" loading="lazy" decoding="async">
+          </div>
+          <span class="cta-final-brand-sub">Massoterapia</span>
+        </div>
         <span class="section-label animate">Agendamento</span>
         <h2 class="animate">Seu corpo merece mais leveza, presença e <em>cuidado.</em></h2>
         <p class="animate">Chame no WhatsApp, conte o que você está sentindo e receba uma orientação inicial para escolher o atendimento mais coerente para o seu momento.</p>
@@ -4433,7 +4521,7 @@
     }
 
     function revealAll() {
-      var selector = '.animate,.animate-left,.animate-right,.animate-scale,.hero-text-inner,.grow-line,.mask-reveal,.section-title-underline,.reveal';
+      var selector = '.animate,.animate-left,.animate-right,.animate-scale,.hero-text-inner,.grow-line,.mask-reveal,.section-title-underline,.reveal,.section-reveal';
       document.querySelectorAll(selector).forEach(function(el) {
         el.classList.add('visible');
       });
@@ -4467,7 +4555,7 @@
   (function() {
     if (window.IntersectionObserver) return;
     function showAll() {
-      var selector = '.animate,.animate-left,.animate-right,.hero-text-inner,.grow-line,.reveal';
+      var selector = '.animate,.animate-left,.animate-right,.hero-text-inner,.grow-line,.reveal,.section-reveal';
       document.querySelectorAll(selector).forEach(function(el) {
         el.classList.add('visible');
       });
@@ -4541,9 +4629,9 @@
       });
     }, { threshold: 0.08, rootMargin: '0px 0px -18px 0px' });
 
-    document.querySelectorAll('.animate,.animate-left,.animate-right,.animate-scale,.grow-line,.mask-reveal,.section-title-underline,.hero-text-inner,.reveal').forEach(function(el) {
-      observer.observe(el);
-    });
+      document.querySelectorAll('.animate,.animate-left,.animate-right,.animate-scale,.grow-line,.mask-reveal,.section-title-underline,.hero-text-inner,.reveal,.section-reveal').forEach(function(el) {
+        observer.observe(el);
+      });
   })();
 
   (function() {
