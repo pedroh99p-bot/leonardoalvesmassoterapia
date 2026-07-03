@@ -1414,15 +1414,7 @@
       overflow: hidden;
     }
     .footer::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 50% 50%, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 58%),
-        url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp') center center / clamp(210px, 24vw, 300px) auto no-repeat;
-      opacity: .12;
-      pointer-events: none;
-      filter: saturate(.9);
+      display: none;
     }
     .footer > .container {
       position: relative;
@@ -1456,6 +1448,7 @@
     }
     .footer-brand {
       text-align: center;
+      margin-inline: auto;
     }
     .footer-title {
       font-size: 0.7rem;
@@ -2467,15 +2460,17 @@
       background: rgba(29,24,21,.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
+      top: calc(env(safe-area-inset-top, 0px) + 7px);
       padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .16rem;
       box-shadow: 0 1px 0 rgba(201,168,106,.2);
       border-bottom: 1px solid rgba(255,255,255,.08);
-      transition: background .45s var(--ease), box-shadow .45s var(--ease), padding .45s var(--ease), backdrop-filter .45s var(--ease), border-color .45s var(--ease);
+      transition: background .45s var(--ease), box-shadow .45s var(--ease), padding .45s var(--ease), backdrop-filter .45s var(--ease), border-color .45s var(--ease), top .45s var(--ease);
     }
     .navbar.scrolled {
       background: rgba(39,32,28,.72);
       backdrop-filter: blur(18px) saturate(1.08);
       -webkit-backdrop-filter: blur(18px) saturate(1.08);
+      top: calc(env(safe-area-inset-top, 0px) + 10px);
       padding: calc(env(safe-area-inset-top, 0px) + .02rem) 0 .06rem;
       box-shadow: 0 8px 24px rgba(0,0,0,.18);
       border-bottom-color: rgba(255,255,255,.12);
@@ -2556,19 +2551,10 @@
       border-color: rgba(255,255,255,.18);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 28px rgba(0,0,0,.08);
     }
-    .hero-brand {
-      width: clamp(198px, 24vw, 308px);
-      margin-bottom: .95rem;
-    }
-    .hero-brand img {
-      width: 100%;
-      height: auto;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 24px rgba(0,0,0,.18));
-    }
     .footer-brand-logo {
       width: clamp(188px, 21vw, 280px);
       margin-bottom: var(--s-md);
+      margin-inline: auto;
     }
     .footer-brand-logo img {
       width: 100%;
@@ -2599,7 +2585,7 @@
     .hero-bg-image {
       background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1783116145/150118ca-3ad4-41e5-9206-db24355de77f_mryv8e.webp');
       background-size: cover;
-      background-position: 72% center;
+      background-position: 78% center;
       filter: saturate(.94) contrast(1.04);
     }
     .hero-bg-overlay {
@@ -2769,7 +2755,7 @@
       padding-block: clamp(3.4rem, 8vw, 5.7rem);
     }
     .roller {
-      background: var(--c-accent);
+      background: #2A221D;
       color: rgba(253,250,246,.75);
       padding: .5rem 0;
       overflow: hidden;
@@ -2802,20 +2788,21 @@
       flex-shrink: 0;
     }
     .roller-inline {
-      background: linear-gradient(180deg, rgba(245,239,228,.9), rgba(255,255,255,.96));
-      color: var(--c-text-muted);
-      border-top: 1px solid var(--c-border);
-      border-bottom: 1px solid var(--c-border);
+      background: #2A221D;
+      color: rgba(253,250,246,.75);
+      border-top: 1px solid rgba(201,169,110,.12);
+      border-bottom: 1px solid rgba(201,169,110,.12);
     }
-    .roller-inline .roller-item .roller-dot { background: var(--c-alert); }
+    .roller-inline .roller-item .roller-dot { background: var(--c-primary); }
     .roller-inline--contrast {
-      background: linear-gradient(180deg, rgba(90,64,58,.98), rgba(74,52,46,.96));
+      background: #2A221D;
       color: rgba(253,250,246,.74);
-      border-color: rgba(201,145,140,.16);
+      border-color: rgba(201,169,110,.12);
     }
-    .roller-inline--contrast .roller-item .roller-dot { background: #E3B5AE; }
+    .roller-inline--contrast .roller-item .roller-dot { background: var(--c-primary); }
     .roller-inline--soft {
-      background: rgba(253,250,246,.98);
+      background: #2A221D;
+      color: rgba(253,250,246,.75);
     }
     .ux-carousel-shell {
       position: relative;
@@ -3455,36 +3442,64 @@
     .depoimentos {
       background: linear-gradient(180deg, rgba(245,239,228,.42) 0%, rgba(253,250,246,1) 100%);
     }
-    .proof-panel {
-      padding: clamp(1.5rem, 3vw, 2.15rem);
-      border: 1px solid var(--c-border);
-      border-radius: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,.95), rgba(245,239,228,.82));
-      box-shadow: var(--shadow-sm);
-    }
     .proof-intro {
       max-width: 45rem;
       margin-bottom: var(--s-xl);
     }
-    .proof-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: var(--s-lg);
+    .testimonials-shell {
+      position: relative;
+      margin-top: var(--s-xl);
     }
-    .proof-point {
-      padding: 1rem;
+    .testimonial-card {
+      height: 100%;
+      padding: 1.25rem;
       border: 1px solid rgba(201,169,110,.18);
-      border-radius: 18px;
-      background: rgba(255,255,255,.84);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(245,239,228,.88));
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: .95rem;
     }
-    .proof-point strong {
-      display: block;
-      margin-bottom: .35rem;
-      color: var(--c-text);
-    }
-    .proof-point span {
+    .testimonial-card p {
       color: var(--c-text-muted);
-      font-size: .92rem;
+      line-height: 1.75;
+      flex: 1;
+    }
+    .testimonial-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .9rem;
+    }
+    .testimonial-brand {
+      width: 58px;
+      flex-shrink: 0;
+    }
+    .testimonial-brand img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .testimonial-stars {
+      display: flex;
+      gap: .2rem;
+      color: var(--c-primary);
+    }
+    .testimonial-stars svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+      stroke: currentColor;
+    }
+    .testimonial-name {
+      color: var(--c-text);
+      font-weight: 600;
+      letter-spacing: .02em;
+    }
+    .testimonial-meta {
+      color: var(--c-text-muted);
+      font-size: .85rem;
     }
     .localizacao-inner--mapped {
       display: grid;
@@ -3611,7 +3626,6 @@
     @media (min-width: 768px) and (max-width: 1099px) {
       .ux-carousel-track { grid-auto-columns: minmax(48%, 1fr); }
       .service-panel-grid,
-      .proof-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .specialist-bullets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (min-width: 1100px) {
@@ -3628,7 +3642,7 @@
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 64% center; }
+      .hero-bg-image { background-position: 74% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(24,18,15,.92) 0%, rgba(24,18,15,.78) 42%, rgba(24,18,15,.3) 68%, rgba(24,18,15,.05) 100%);
       }
@@ -3643,7 +3657,6 @@
       .hero-image-area { display: none; }
       .trust-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .service-panel-grid,
-      .proof-grid,
       .specialist-bullets,
       .quiz-summary,
       .localizacao-inner--mapped,
@@ -3676,10 +3689,6 @@
       .navbar.scrolled {
         padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .1rem;
       }
-      .footer::before {
-        background-size: 180px auto;
-        opacity: .1;
-      }
       .navbar .container { padding-inline: 1.2rem; }
       .navbar-inner {
         min-height: 38px;
@@ -3691,13 +3700,6 @@
       .navbar-actions {
         margin-left: auto;
         flex-shrink: 0;
-      }
-      .navbar-brand-mark {
-        width: 120px;
-        padding: .4rem .72rem;
-      }
-      .navbar.scrolled .navbar-brand-mark {
-        width: 106px;
       }
       .navbar-cta {
         display: inline-flex;
@@ -3773,22 +3775,14 @@
       .navbar .container { padding-inline: 1.28rem; }
       .navbar-logo { width: 156px; }
       .navbar.scrolled .navbar-logo { width: 138px; }
-      .navbar-brand-mark {
-        width: 112px;
-        padding: .34rem .62rem;
-      }
-      .navbar.scrolled .navbar-brand-mark {
-        width: 98px;
-      }
       .navbar-cta {
         padding: .42rem .64rem;
         font-size: .5rem;
       }
-      .hero-bg-image { background-position: 66% center; }
+      .hero-bg-image { background-position: 73% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(24,18,15,.94) 0%, rgba(24,18,15,.78) 48%, rgba(24,18,15,.22) 76%, rgba(24,18,15,.03) 100%);
       }
-      .hero-brand { width: 182px; margin-bottom: .85rem; }
       .hero h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
       .hero-sub { max-width: 16.5rem; }
       .container { padding-inline: 1rem; }
@@ -3858,9 +3852,6 @@
       <div class="container">
         <div class="hero-inner hero-inner--focused">
           <div class="hero-content animate-left">
-            <div class="hero-brand animate">
-              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="eager" decoding="async">
-            </div>
             <div class="hero-badge animate">Agenda aberta • Rocinha • Rio de Janeiro</div>
             <p class="hero-kicker animate">Atendimento com quiropraxia, massoterapia e terapias manuais</p>
             <h1 aria-label="Coluna no lugar, vida em equilíbrio.">
@@ -4432,26 +4423,99 @@
     <section class="depoimentos section-reveal" id="depoimentos">
       <div class="container">
         <header class="proof-header animate">
-          <span class="section-label">Confiança</span>
-          <h2 class="section-title">Experiência, clareza e técnica também fazem parte do <em>atendimento.</em></h2>
+          <span class="section-label">Depoimentos</span>
+          <h2 class="section-title">Quem passa pelo atendimento percebe mais confiança, clareza e <em>cuidado.</em></h2>
         </header>
-        <div class="proof-panel animate">
-          <p class="proof-intro">Uma trajetória dedicada a ajudar pessoas a viverem com menos dor, mais mobilidade e mais equilíbrio corporal, com atendimento individualizado e orientação clara.</p>
-          <div class="proof-grid">
-            <div class="proof-point animate-scale">
-              <strong>Foco em coluna e mobilidade</strong>
-              <span>O atendimento considera dor, postura, travamentos e recuperação de movimento.</span>
-            </div>
-            <div class="proof-point animate-scale">
-              <strong>Terapias manuais individualizadas</strong>
-              <span>Quiropraxia, massoterapia e recursos complementares são orientados conforme sua queixa.</span>
-            </div>
-            <div class="proof-point animate-scale">
-              <strong>+ de 20.000 vidas transformadas</strong>
-              <span>Uma prova de trajetória e experiência construída ao longo de muitos atendimentos.</span>
+        <p class="proof-intro animate">Relatos de pessoas que buscaram mais alívio, mobilidade e orientação individualizada para cuidar da coluna e do corpo no dia a dia.</p>
+        <div class="ux-carousel-shell testimonials-shell animate" data-carousel="depoimentos">
+          <button type="button" class="carousel-nav" data-carousel-prev aria-label="Ver depoimento anterior">
+            <svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button type="button" class="carousel-nav" data-carousel-next aria-label="Ver próximo depoimento">
+            <svg viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></svg>
+          </button>
+          <div class="ux-carousel-viewport">
+            <div class="ux-carousel-track stagger">
+              <article class="testimonial-card animate-scale">
+                <div class="testimonial-top">
+                  <div class="testimonial-brand">
+                    <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+                  </div>
+                  <div class="testimonial-stars" aria-label="5 estrelas">
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                  </div>
+                </div>
+                <p>“Cheguei com muita rigidez na cervical e saí me sentindo mais solta. Gostei da forma como ele explica o atendimento e orienta sem pressa.”</p>
+                <div>
+                  <div class="testimonial-name">Mariana S.</div>
+                  <div class="testimonial-meta">Atendimento para cervical e tensão muscular</div>
+                </div>
+              </article>
+              <article class="testimonial-card animate-scale">
+                <div class="testimonial-top">
+                  <div class="testimonial-brand">
+                    <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+                  </div>
+                  <div class="testimonial-stars" aria-label="5 estrelas">
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                  </div>
+                </div>
+                <p>“Procurei atendimento por causa da lombar e senti muito mais segurança na avaliação. Tudo foi explicado com clareza desde o primeiro contato.”</p>
+                <div>
+                  <div class="testimonial-name">Carlos M.</div>
+                  <div class="testimonial-meta">Atendimento para lombar e mobilidade</div>
+                </div>
+              </article>
+              <article class="testimonial-card animate-scale">
+                <div class="testimonial-top">
+                  <div class="testimonial-brand">
+                    <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+                  </div>
+                  <div class="testimonial-stars" aria-label="5 estrelas">
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                  </div>
+                </div>
+                <p>“Gostei muito da combinação de técnicas e da atenção aos detalhes. Foi um atendimento cuidadoso, técnico e ao mesmo tempo acolhedor.”</p>
+                <div>
+                  <div class="testimonial-name">Fernanda R.</div>
+                  <div class="testimonial-meta">Atendimento para coluna e sobrecarga corporal</div>
+                </div>
+              </article>
+              <article class="testimonial-card animate-scale">
+                <div class="testimonial-top">
+                  <div class="testimonial-brand">
+                    <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+                  </div>
+                  <div class="testimonial-stars" aria-label="5 estrelas">
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="m12 3 2.76 5.59 6.17.9-4.46 4.34 1.05 6.15L12 17.08 6.48 19.98l1.05-6.15L3.07 9.49l6.17-.9Z"/></svg>
+                  </div>
+                </div>
+                <p>“Eu queria entender qual atendimento fazia sentido para mim e recebi uma orientação muito clara. O contato pelo WhatsApp já passou bastante confiança.”</p>
+                <div>
+                  <div class="testimonial-name">Juliana P.</div>
+                  <div class="testimonial-meta">Orientação inicial e pré-avaliação</div>
+                </div>
+              </article>
             </div>
           </div>
         </div>
+        <div class="carousel-dots-inline" data-carousel-dots="depoimentos"></div>
       </div>
     </section>
 
