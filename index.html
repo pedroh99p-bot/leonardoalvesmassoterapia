@@ -2488,30 +2488,15 @@
     .navbar-logo {
       display: inline-flex;
       align-items: center;
-      gap: clamp(.55rem, .9vw, .75rem);
+      gap: 0;
       width: auto;
-      max-width: min(100%, 320px);
+      max-width: min(100%, 240px);
       min-width: 0;
       flex-shrink: 1;
       transition: gap .45s var(--ease), transform .45s var(--ease), filter .45s var(--ease);
     }
-    .navbar-logo-icon {
-      width: auto;
-      height: auto;
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .45s var(--ease);
-    }
-    .navbar-logo-icon img {
-      width: auto;
-      height: clamp(40px, 3.6vw, 46px);
-      object-fit: contain;
-      display: block;
-    }
     .navbar-logo-wordmark {
-      width: clamp(170px, 17vw, 224px);
+      width: clamp(178px, 17.6vw, 232px);
       min-width: 0;
       transition: width .45s var(--ease), transform .45s var(--ease), filter .45s var(--ease);
     }
@@ -2524,9 +2509,8 @@
     .navbar.scrolled .navbar-logo {
       transform: translateY(-1px);
     }
-    .navbar.scrolled .navbar-logo-icon img { height: clamp(36px, 3.2vw, 42px); }
     .navbar.scrolled .navbar-logo-wordmark {
-      width: clamp(156px, 15.4vw, 204px);
+      width: clamp(166px, 16vw, 214px);
     }
     .navbar-nav {
       display: flex;
@@ -2619,7 +2603,7 @@
     .hero-bg-image {
       background-image: url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1783116145/150118ca-3ad4-41e5-9206-db24355de77f_mryv8e.webp');
       background-size: cover;
-      background-position: 66% center;
+      background-position: 64% center;
       filter: saturate(.94) contrast(1.04);
     }
     .hero-bg-overlay {
@@ -3725,7 +3709,7 @@
         grid-template-columns: 1fr;
         padding: 1rem 0 3rem;
       }
-      .hero-bg-image { background-position: 74% center; }
+      .hero-bg-image { background-position: 71% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(24,18,15,.84) 0%, rgba(24,18,15,.64) 40%, rgba(24,18,15,.22) 68%, rgba(24,18,15,.03) 100%);
       }
@@ -3778,13 +3762,10 @@
         gap: .58rem;
       }
       .navbar-logo {
-        gap: .58rem;
         max-width: calc(100% - 5.4rem);
       }
-      .navbar-logo-icon img { height: 36px; }
-      .navbar-logo-wordmark { width: 144px; }
-      .navbar.scrolled .navbar-logo-icon img { height: 33px; }
-      .navbar.scrolled .navbar-logo-wordmark { width: 138px; }
+      .navbar-logo-wordmark { width: 172px; }
+      .navbar.scrolled .navbar-logo-wordmark { width: 164px; }
       .navbar-nav { display: none !important; }
       .navbar-actions {
         margin-left: auto;
@@ -3865,18 +3846,15 @@
       .navbar .container { padding-inline: 1rem; }
       .navbar-inner { gap: .5rem; }
       .navbar-logo {
-        gap: .5rem;
         max-width: calc(100% - 5rem);
       }
-      .navbar-logo-icon img { height: 32px; }
-      .navbar-logo-wordmark { width: 128px; }
-      .navbar.scrolled .navbar-logo-icon img { height: 30px; }
-      .navbar.scrolled .navbar-logo-wordmark { width: 124px; }
+      .navbar-logo-wordmark { width: 148px; }
+      .navbar.scrolled .navbar-logo-wordmark { width: 142px; }
       .navbar-cta {
         padding: .5rem .68rem;
         font-size: .48rem;
       }
-      .hero-bg-image { background-position: 74% center; }
+      .hero-bg-image { background-position: 71% center; }
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(24,18,15,.86) 0%, rgba(24,18,15,.66) 46%, rgba(24,18,15,.18) 74%, rgba(24,18,15,.03) 100%);
       }
@@ -3927,9 +3905,6 @@
     <div class="container">
       <div class="navbar-inner">
         <a href="#inicio" class="navbar-logo" aria-label="Leonardo Alves">
-          <span class="navbar-logo-icon" aria-hidden="true">
-            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118146/5d773bcc-4ee0-4cc0-a5ee-cb5288e69fe4_1_xtqqtb.webp" alt="">
-          </span>
           <span class="navbar-logo-wordmark">
             <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118135/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_wpfjih.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
           </span>
