@@ -14,6 +14,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783116145/150118ca-3ad4-41e5-9206-db24355de77f_mryv8e.webp">
+  <link rel="icon" type="image/webp" href="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118146/5d773bcc-4ee0-4cc0-a5ee-cb5288e69fe4_1_xtqqtb.webp">
   <!-- SUBSTITUA og:url quando o domínio for definido: <meta property="og:url" content="https://seudominio.com.br"> -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1418,7 +1419,7 @@
       inset: 0;
       background:
         radial-gradient(circle at 50% 50%, rgba(255,255,255,.09) 0%, rgba(255,255,255,0) 58%),
-        url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1783114985/8d1527f9-4ba6-46c1-a9af-847fa68ace78_1_tmbah3.webp') center center / clamp(210px, 24vw, 300px) auto no-repeat;
+        url('https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp') center center / clamp(210px, 24vw, 300px) auto no-repeat;
       opacity: .12;
       pointer-events: none;
       filter: saturate(.9);
@@ -2466,7 +2467,7 @@
       background: rgba(29,24,21,.92);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      padding: calc(env(safe-area-inset-top, 0px) + .18rem) 0 .22rem;
+      padding: calc(env(safe-area-inset-top, 0px) + .12rem) 0 .16rem;
       box-shadow: 0 1px 0 rgba(201,168,106,.2);
       border-bottom: 1px solid rgba(255,255,255,.08);
       transition: background .45s var(--ease), box-shadow .45s var(--ease), padding .45s var(--ease), backdrop-filter .45s var(--ease), border-color .45s var(--ease);
@@ -2475,8 +2476,8 @@
       background: rgba(39,32,28,.72);
       backdrop-filter: blur(18px) saturate(1.08);
       -webkit-backdrop-filter: blur(18px) saturate(1.08);
-      padding: calc(env(safe-area-inset-top, 0px) + .08rem) 0 .14rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,.14);
+      padding: calc(env(safe-area-inset-top, 0px) + .02rem) 0 .06rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
       border-bottom-color: rgba(255,255,255,.12);
     }
     .navbar,
@@ -2490,13 +2491,13 @@
       width: 100%;
     }
     .navbar-logo {
-      width: clamp(78px, 9vw, 96px);
+      width: clamp(176px, 18vw, 238px);
       flex-shrink: 0;
       transition: width .45s var(--ease), transform .45s var(--ease), filter .45s var(--ease);
     }
     .navbar.scrolled .navbar-logo {
-      width: clamp(68px, 7.8vw, 82px);
-      transform: translateY(-1px);
+      width: clamp(156px, 15.5vw, 204px);
+      transform: translateY(-2px);
     }
     .navbar-nav {
       display: flex;
@@ -2554,6 +2555,25 @@
       background: rgba(255,255,255,.12);
       border-color: rgba(255,255,255,.18);
       box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 10px 28px rgba(0,0,0,.08);
+    }
+    .hero-brand {
+      width: clamp(198px, 24vw, 308px);
+      margin-bottom: .95rem;
+    }
+    .hero-brand img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,.18));
+    }
+    .footer-brand-logo {
+      width: clamp(188px, 21vw, 280px);
+      margin-bottom: var(--s-md);
+    }
+    .footer-brand-logo img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
     .navbar-cta {
       display: inline-flex;
@@ -3665,8 +3685,8 @@
         min-height: 38px;
         gap: .7rem;
       }
-      .navbar-logo { width: 64px; }
-      .navbar.scrolled .navbar-logo { width: 56px; }
+      .navbar-logo { width: 170px; }
+      .navbar.scrolled .navbar-logo { width: 150px; }
       .navbar-nav { display: none !important; }
       .navbar-actions {
         margin-left: auto;
@@ -3751,8 +3771,8 @@
     }
     @media (max-width: 520px) {
       .navbar .container { padding-inline: 1.28rem; }
-      .navbar-logo { width: 58px; }
-      .navbar.scrolled .navbar-logo { width: 52px; }
+      .navbar-logo { width: 156px; }
+      .navbar.scrolled .navbar-logo { width: 138px; }
       .navbar-brand-mark {
         width: 112px;
         padding: .34rem .62rem;
@@ -3768,6 +3788,7 @@
       .hero-bg-overlay {
         background: linear-gradient(90deg, rgba(24,18,15,.94) 0%, rgba(24,18,15,.78) 48%, rgba(24,18,15,.22) 76%, rgba(24,18,15,.03) 100%);
       }
+      .hero-brand { width: 182px; margin-bottom: .85rem; }
       .hero h1 { font-size: clamp(2rem, 10vw, 2.7rem); }
       .hero-sub { max-width: 16.5rem; }
       .container { padding-inline: 1rem; }
@@ -3782,7 +3803,7 @@
   <div class="loader-curtain" id="loader-curtain" aria-hidden="true"></div>
   <div class="page-loader" id="page-loader" role="status" aria-label="Carregando">
     <div class="loader-logo logo-bubble" style="width: 160px; margin-bottom: 20px;">
-      <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783114985/8d1527f9-4ba6-46c1-a9af-847fa68ace78_1_tmbah3.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
+      <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
     </div>
     <div class="loader-sub">Quiropraxia &amp; Massoterapia</div>
     <div class="loader-line"></div>
@@ -3814,8 +3835,8 @@
   <header class="navbar" id="navbar">
     <div class="container">
       <div class="navbar-inner">
-        <a href="#inicio" class="navbar-logo logo-bubble" aria-label="Leonardo Alves">
-          <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783114985/8d1527f9-4ba6-46c1-a9af-847fa68ace78_1_tmbah3.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
+        <a href="#inicio" class="navbar-logo" aria-label="Leonardo Alves">
+          <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118135/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_wpfjih.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
         </a>
         <nav class="navbar-nav" aria-label="Navegação principal">
           <a href="#inicio">Início</a>
@@ -3824,9 +3845,6 @@
           <a href="#localizacao">Localização</a>
         </nav>
         <div class="navbar-actions">
-          <div class="navbar-brand-mark" aria-hidden="true">
-            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783114985/8d1527f9-4ba6-46c1-a9af-847fa68ace78_1_tmbah3.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta">
-          </div>
           <a href="#" class="btn navbar-cta wa-link" data-wa-message="Olá, Leonardo. Vim pelo site e quero agendar um atendimento." target="_blank" rel="noopener" id="navbar-cta">Agendar</a>
         </div>
       </div>
@@ -3840,6 +3858,9 @@
       <div class="container">
         <div class="hero-inner hero-inner--focused">
           <div class="hero-content animate-left">
+            <div class="hero-brand animate">
+              <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="eager" decoding="async">
+            </div>
             <div class="hero-badge animate">Agenda aberta • Rocinha • Rio de Janeiro</div>
             <p class="hero-kicker animate">Atendimento com quiropraxia, massoterapia e terapias manuais</p>
             <h1 aria-label="Coluna no lugar, vida em equilíbrio.">
@@ -4545,7 +4566,7 @@
       <div class="container">
         <div class="cta-final-brand animate-scale">
           <div class="logo-bubble">
-            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783114985/8d1527f9-4ba6-46c1-a9af-847fa68ace78_1_tmbah3.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
           </div>
           <span class="cta-final-brand-sub">Quiropraxista &amp; Massoterapeuta</span>
         </div>
@@ -4581,6 +4602,9 @@
     <div class="container">
       <div class="footer-inner footer-inner--compact">
         <div class="footer-brand">
+          <div class="footer-brand-logo">
+            <img src="https://res.cloudinary.com/dm9mnc97u/image/upload/v1783118147/6f74b847-e3bd-4ac7-a1ba-9d951360b588_2_1_xvqpin.webp" alt="Leonardo Alves Quiropraxista e Massoterapeuta" loading="lazy" decoding="async">
+          </div>
           <p class="footer-copy">Leonardo Alves — Quiropraxista &amp; Massoterapeuta. Atendimento voltado para alívio de dores, coluna, mobilidade e terapias manuais na Rua Quatro, número 76 — Rocinha, Rio de Janeiro - RJ.</p>
           <p class="footer-copy"><a href="https://www.instagram.com/massoterapeuta_leonardoalves/" target="_blank" rel="noopener noreferrer">@massoterapeuta_leonardoalves</a></p>
         </div>
